@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "components": ["./components"],
+      "utils": ["./utils"],
+      "api": ["./utils/api"],
+      "icons": ["./asserts/icons"],
+      "consts": ["./utils/constants"]
+    }
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

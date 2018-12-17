@@ -1,0 +1,33 @@
+{
+  "presets": ["next/babel"],
+  "plugins": [
+    ["@babel/plugin-proposal-decorators", {
+      "decoratorsBeforeExport": true
+    }],
+    [
+      "import",
+      {
+        "libraryName": "antd",
+        "style": true
+      }
+    ],
+    [
+      "module-resolver",
+      {
+        "root": ["./"],
+        "alias": {
+          "components": "./components",
+          "utils": "./utils",
+          "api": "./utils/api",
+          "icons": "./asserts/icons",
+          "consts": "./utils/constants"
+        }
+      }
+    ],
+    [
+      "react-intl", {
+        "messagesDir": "server/lang/.messages/"
+      }
+    ]
+  ]
+}

@@ -1,0 +1,45 @@
+.input-night {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.input-night .anticon.anticon-down {
+  font-size: 1em !important;
+}
+
+.input-night--menu {
+  max-height: 350px;
+  overflow: auto;
+}
+
+.input-night--menu .ant-dropdown-menu-item {
+  position: relative;
+  min-width: 180px;
+  padding-left: 25px;
+  font-weight: 500;
+  font-size: 1.1em;
+}
+
+.input-night--menu .ant-dropdown-menu-item.active::before {
+  content: ' ';
+  position: absolute;
+  top: 12px;
+  left: 8px;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: red;
+  border-radius: 50%;
+}
+
+.input-night--menu .ant-dropdown-menu-item .date {
+  font-weight: normal;
+  font-size: .9em;
+}
+
+.input-night--btn {
+  padding-left: 8px;
+  padding-right: 8px;
+}
