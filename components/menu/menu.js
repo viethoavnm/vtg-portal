@@ -28,7 +28,7 @@ class Menu extends React.PureComponent {
 const MENU_ITEMS = [
   {
     title: "HOTEL",
-    href: '/hotel',
+    href: '/',
     name: 'HOME'
   },
   {

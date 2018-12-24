@@ -1,13 +1,14 @@
 import React from 'react'
-import Router from 'next/router'
 import Loader from 'components/loader'
+import { LocaleProvider } from 'antd';
 import NextApp, { Container } from 'next/app'
 import { PageTransition } from 'next-page-transitions'
 import { IntlProvider, addLocaleData } from 'react-intl'
-import { getUserFromServerCookie, getUserFromLocalCookie } from 'utils/auth'
+import { getUserFromServerCookie } from 'utils/auth'
 import { requester } from 'api'
 import withRedux from 'next-redux-wrapper'
 import { Provider } from 'react-redux'
+import viVN from 'antd/lib/locale-provider/vi_VN'
 import {
   initStore,
   renderClock,
@@ -50,20 +51,22 @@ class App extends NextApp {
       <Container>
         <Provider store={store}>
           <IntlProvider locale={locale} messages={messages} initialNow={now}>
-            <PageTransition
-              timeout={TIMEOUT}
-              loadingDelay={500}
-              loadingComponent={<Loader />}
-              classNames='page-transition'
-              loadingClassNames='loading-indicator'
-              loadingTimeout={{ enter: TIMEOUT, exit: 0 }}
-            >
-              {Component.Layout ?
-                <Component.Layout>
-                  <Component {...pageProps} />
-                </Component.Layout>
-                : <Component {...pageProps} />}
-            </PageTransition>
+            <LocaleProvider locale={viVN}>
+              <PageTransition
+                timeout={TIMEOUT}
+                loadingDelay={400}
+                loadingComponent={<Loader />}
+                classNames='page-transition'
+                loadingClassNames='loading-indicator'
+                loadingTimeout={{ enter: TIMEOUT, exit: 0 }}
+              >
+                {Component.Layout ?
+                  <Component.Layout>
+                    <Component {...pageProps} />
+                  </Component.Layout>
+                  : <Component {...pageProps} />}
+              </PageTransition>
+            </LocaleProvider>
           </IntlProvider>
         </Provider>
       </Container >)

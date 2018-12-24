@@ -78,5 +78,7 @@
   "SATISFIED_LEVEL_7": "Tuyệt hảo",
   "SATISFIED_LEVEL_8": "Xuất sắc",
   "%d night": "{value} đêm",
-  "%d rooms, %d guests": "{room} phòng, {guest} khách"
+  "%d rooms, %d guests": "{room} phòng, {guest} khách",
+  "Account": "Tài khoản",
+  "Register": "Đăng ký"
 }
