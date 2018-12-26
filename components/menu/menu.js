@@ -27,34 +27,34 @@ class Menu extends React.PureComponent {
 
 const MENU_ITEMS = [
   {
-    title: "HOTEL",
+    title: "Hotel",
     href: '/',
     name: 'HOME'
   },
   {
-    title: "TRAVEL_TRANSPORT",
+    title: "Rent cars",
     href: '/car',
     name: ''
   },
   {
-    title: "FLIGHT_TICKET",
+    title: "Flight tickets",
     href: '/flight',
     name: ''
   },
   {
-    title: "PLACE",
+    title: "Tours",
     href: '/place',
     name: ''
   },
   {
-    title: "PROMOTION",
+    title: "Voucher",
     href: '/promotions',
     name: ''
   },
   {
-    title: "BLOG",
+    title: "Travel Blog",
     href: '/blogs',
-    name: 'BLOG'
+    name: ''
   }
 ]
 

@@ -22,14 +22,14 @@ export default class LangNCurrency extends React.PureComponent {
         <div className="languages">
           <ul className="language">
             <span className="languages__title">
-              {this.props.t('LANGUAGE')}
+              {this.props.t('Language')}
             </span>
             <li><span className="language__flag flag vn" />Tiếng Việt</li>
             <li><span className="language__flag flag sg" />Tiếng Anh</li>
           </ul>
           <ul className="currency">
             <span className="languages__title">
-              {this.props.t('CURRENCY')}
+              {this.props.t('Currency')}
             </span>
             <li>
               <span className="currency__token">VND</span>
@@ -41,7 +41,7 @@ export default class LangNCurrency extends React.PureComponent {
             </li>
             <li className="currency__btn">
               <Button type="primary" onClick={this.hide}>
-                {this.props.t('DONE')}
+                {this.props.t('Done')}
               </Button>
             </li>
           </ul>
@@ -49,7 +49,7 @@ export default class LangNCurrency extends React.PureComponent {
       }
       trigger="click"
       placement="bottomRight"
-      title={this.props.t('LANGUAGE_AND_CURRENCY_CHANGE')}>
+      title={this.props.t('Change language and currency')}>
       <div className="header__item">
         <span className="flag vn" />
         <span style={{ marginLeft: 4 }}>VND</span>

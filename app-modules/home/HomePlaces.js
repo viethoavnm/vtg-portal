@@ -21,7 +21,7 @@ export default class TopPlaces extends React.PureComponent {
                       <span className="item__slogan">{item.slogan}</span>
                       <span className="item__hotel-count">
                         <Icon type="home" theme="filled" />
-                        <FormattedMessage id="%d hotels" />
+                        <FormattedMessage id="%d hotels" values={{ value: item.count }} />
                       </span>
                     </div>
                     <ImageLoader
