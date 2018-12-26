@@ -4,12 +4,12 @@ import Card from 'components/card'
 import Search from 'components/search'
 import Slider from 'components/slider'
 import Banner from 'components/banner'
-import Advertisement from './advertisement'
-import Places from './places'
+import Advertisement from './HomeAds'
+import Places from './HomePlaces'
 import { requester } from 'api'
 import { connect } from 'react-redux'
-import './home.scss'
 import { FormattedMessage } from 'react-intl';
+import './Home.scss'
 
 class Home extends React.PureComponent {
   state = { places: [], sales: [], suggestions: [] }

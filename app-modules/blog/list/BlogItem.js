@@ -1,6 +1,5 @@
 import React from 'react'
 import moment from 'moment'
-import Viewer from 'components/viewer'
 import IconText from 'components/icon-text'
 import ImageLoader from 'components/image-loader'
 import Link from 'components/link'

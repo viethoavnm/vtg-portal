@@ -1,6 +1,6 @@
 import React from 'react'
 import { List, Skeleton } from 'antd'
-import Item from './blog-item'
+import Item from './BlogItem'
 import LoadMore from 'components/loadmore'
 
 const MAX_ITEM_LOADING = 5

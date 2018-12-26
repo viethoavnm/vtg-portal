@@ -1,6 +1,5 @@
 import React from 'react'
 import scriptLoader from 'react-async-script-loader'
-import './maps.css'
 
 const API_KEY = 'AIzaSyDIAWyPczV2h0nIV_FtrDUXcFhtao3QyVM'
 const URL = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}`

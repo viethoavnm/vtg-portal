@@ -3,7 +3,7 @@ import { setInfo } from 'utils/redux'
 import { requester } from 'api'
 import Layout from 'components/layout'
 
-const Homepage = dynamic({ loader: () => import('app-modules/homepage') })
+const Homepage = dynamic({ loader: () => import('app-modules/home') })
 
 Homepage.getInitialProps = async ({ store, isServer }) => {
   try {

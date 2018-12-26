@@ -7,7 +7,7 @@ import { injectIntl } from 'react-intl'
 import { connect } from 'react-redux'
 import Router from 'next/router'
 import Head from 'next/head'
-import './login.scss'
+import './Login.scss'
 import {
   FB_APP_ID,
   G_APP_ID
