@@ -80,7 +80,7 @@ class Blogs extends React.PureComponent {
     })
   }
 
-  onChangeProvince = ({ key }) => {
+  onChangeProvince = (key) => {
     Router.push({
       pathname: '/blogs',
       query: { provinceId: key !== 'all' ? key : null }
@@ -143,16 +143,15 @@ class Blogs extends React.PureComponent {
           <div className="blog__right">
             <div>
               <div className="blog__title"><span>{this.t('Search')}</span></div>
+              <div style={{ marginTop: 16 }}>
+                <Province onSelect={this.onChangeProvince} selected={query.provinceId || 'all'} />
+              </div>
               <Input.Search
                 style={{ marginTop: 16 }}
                 onSearch={this.onSearch}
                 placeholder={this.t('Search post')}
                 enterButton={this.t('Act Search')}
               />
-            </div>
-            <div style={{ marginTop: 16 }}>
-              <div className="blog__title"><span>{this.t('Places')}</span> </div>
-              <Province onSelect={this.onChangeProvince} selected={query.provinceId || 'all'} />
             </div>
             <div>
               <div className="blog__title"><span>{this.t('Category')}</span> </div>
