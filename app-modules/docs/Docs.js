@@ -1,14 +1,16 @@
 import React from 'react'
 import request from 'api'
 import Head from 'next/head'
+import { Skeleton } from 'antd'
 import './Docs.scss'
 
 class Docs extends React.Component {
-  state = { content: '' }
+  state = { content: '', loading: false }
   componentDidMount() {
+    this.setState({ loading: true })
     request.getSetting(this.props.id)
       .then(({ value }) => {
-        this.setState({ content: value })
+        this.setState({ content: value, loading: false })
       })
   }
   render() {
@@ -19,6 +21,7 @@ class Docs extends React.Component {
         </Head>
         <div className="container">
           <div dangerouslySetInnerHTML={{ __html: this.state.content }} className="fr-view" />
+          {this.state.loading && <Skeleton active paragraph={{ rows: 10 }} />}
         </div>
       </div>)
   }

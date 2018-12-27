@@ -61,8 +61,15 @@ class NormalLoginForm extends React.Component {
   t = (id) => (this.props.intl.formatMessage({ id }))
 
   fbLogin = () => {
-    FB.login(function (response) {
-      console.log("res", response)
+    FB.login(({ authResponse: { accessToken } }) => {
+      FB.api('/me', (response) => {
+        this.socialLogin({
+          accessToken,
+          username: response.name,
+          email: response.value
+        })
+        console.log('Good to see you, ' + response.name + '.' + ' Email: ' + response.email + ' Facebook ID: ' + response.id);
+      });
     }, {
         scope: 'email',
         return_scopes: true
@@ -74,6 +81,18 @@ class NormalLoginForm extends React.Component {
       .then((response) => {
         console.log("res", response)
       });
+  }
+
+  socialLogin = (data) => {
+    Axios.post(BASE_URL + 'api/user/facebook-login', data)
+      .then(({ data: { value } }) => {
+        this.setState({ loading: false })
+        setToken(value.access_token)
+        if (!!window.history.length)
+          Router.back()
+        else
+          Router.push('/')
+      })
   }
 
   render() {
@@ -104,7 +123,7 @@ class NormalLoginForm extends React.Component {
           <script src="https://apis.google.com/js/client:platform.js?onload=start" async defer></script>
         </Head>
         <div className="auth__logo">
-          <img src="/static/images/logo.png" alt="spetrip logo" />
+          <a href="/"><img src="/static/images/logo.png" alt="spetrip logo" /></a>
         </div>
         <Form onSubmit={this.handleSubmit} className="form-login">
           <FormItem validateStatus={validateStatus}>

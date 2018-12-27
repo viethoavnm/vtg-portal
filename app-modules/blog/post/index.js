@@ -55,6 +55,7 @@ class Post extends React.PureComponent {
             fjs.parentNode.insertBefore(js, fjs);
           }(document, 'script', 'facebook-jssdk'));`}
           </script>
+          <link href="https://cdn.jsdelivr.net/npm/froala-editor@2.9.1/css/froala_style.min.css" rel="stylesheet" type="text/css" />
         </Head>
         <div id="fb-root"></div>
         <div className="blog__cover">
