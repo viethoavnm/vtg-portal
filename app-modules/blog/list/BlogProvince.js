@@ -1,5 +1,5 @@
 import React from 'react'
-import { requester } from 'api'
+import request from 'api'
 import { Menu } from 'antd'
 import { FormattedMessage } from 'react-intl';
 
@@ -9,7 +9,7 @@ export default class Province extends React.Component {
   state = { provinces: [] }
 
   componentDidMount() {
-    requester.getProvinceList()
+    request.getProvinceList()
       .then(({ content: provinces }) => { this.setState({ provinces }) })
   }
 

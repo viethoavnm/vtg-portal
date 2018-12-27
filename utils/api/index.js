@@ -36,4 +36,4 @@ function addInterceptors(instance) {
 /**
  * 
  */
-export const requester = api(services)
+export default api(services)

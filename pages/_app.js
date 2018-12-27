@@ -5,7 +5,7 @@ import NextApp, { Container } from 'next/app'
 import { PageTransition } from 'next-page-transitions'
 import { IntlProvider, addLocaleData } from 'react-intl'
 import { getUserFromServerCookie } from 'utils/auth'
-import { requester } from 'api'
+import request from 'api'
 import withRedux from 'next-redux-wrapper'
 import { Provider } from 'react-redux'
 import viVN from 'antd/lib/locale-provider/vi_VN'
@@ -80,7 +80,7 @@ App.getInitialProps = async ({ Component, ctx }) => {
     const { store, isServer } = ctx
     if (isServer) {
       const loggedUser = getUserFromServerCookie(ctx.req)
-      const info = JSON.parse((await requester.getSetting('1')).value);
+      const info = JSON.parse((await request.getSetting('1')).value);
       store.dispatch(renderClock())
       store.dispatch(setUserInfo(loggedUser))
       store.dispatch(setInfo({ 'COMMON': info }))

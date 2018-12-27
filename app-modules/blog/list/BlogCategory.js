@@ -1,5 +1,5 @@
 import React from 'react'
-import { requester } from 'api'
+import request from 'api'
 import { Menu } from 'antd'
 import { FormattedMessage } from 'react-intl'
 
@@ -9,9 +9,9 @@ export default class Category extends React.Component {
   state = { categories: [], provinces: [] }
 
   componentDidMount() {
-    requester.getCategoryList()
+    request.getCategoryList()
       .then((categories) => { this.setState({ categories }) })
-    requester.getProvinceList()
+    request.getProvinceList()
       .then(({ content: provinces }) => { this.setState({ provinces }) })
   }
 

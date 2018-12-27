@@ -8,7 +8,7 @@ import Category from './BlogCategory'
 import Province from './BlogProvince'
 import IconText from 'components/icon-text'
 import PostList from 'components/post-list'
-import { requester } from 'api'
+import request from 'api'
 import Head from 'next/head'
 import Fanpage from 'components/facebook/page'
 import { injectIntl } from 'react-intl'
@@ -26,7 +26,7 @@ class Blogs extends React.PureComponent {
     const { query } = this.props
     const isSearch = !!query && (!!query.text || !!query.categoryId || !!query.provinceId)
     if (isSearch) {
-      requester.searchBlog({
+      request.searchBlog({
         page,
         provinceId: query.provinceId,
         categoryId: query.categoryId,
@@ -43,7 +43,7 @@ class Blogs extends React.PureComponent {
           this.setState({ loading: false })
         })
     } else
-      requester.getBlogList({ page })
+      request.getBlogList({ page })
         .then((data) => {
           this.setState({
             ...data,
@@ -61,7 +61,7 @@ class Blogs extends React.PureComponent {
   }
 
   componentDidMount() {
-    requester.getTopViewBlog({})
+    request.getTopViewBlog({})
       .then(({ content }) => { this.setState({ topView: content.slice(0, 6) }) })
     this.fetch()
   }

@@ -5,7 +5,7 @@ import Viewer from 'components/viewer'
 import PostList from 'components/post-list'
 import ImageLoader from 'components/image-loader'
 import IconText from 'components/icon-text'
-import { requester } from 'api'
+import request from 'api'
 import Fanpage from 'components/facebook/page'
 import ShareButton from 'components/facebook/share'
 import { strip } from 'utils/html'
@@ -28,7 +28,7 @@ class Post extends React.PureComponent {
 
   componentDidMount() {
     const { categoryId, provinceId } = this.props.post
-    requester.getRelativeBlog({ categoryId, provinceId })
+    request.getRelativeBlog({ categoryId, provinceId })
       .then(({ content: relative }) => { this.setState({ relative }) })
   }
 

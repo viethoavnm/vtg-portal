@@ -6,7 +6,7 @@ import Slider from 'components/slider'
 import Banner from 'components/banner'
 import Advertisement from './HomeAds'
 import Places from './HomePlaces'
-import { requester } from 'api'
+import request from 'api'
 import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl';
 import './Home.scss'
@@ -15,9 +15,9 @@ class Home extends React.PureComponent {
   state = { places: [], sales: [], suggestions: [] }
 
   componentDidMount() {
-    requester.getTopPlaces().then(({ content: places }) => { this.setState({ places }) })
-    requester.getTopSaleOff().then(({ content: sales }) => { this.setState({ sales }) })
-    requester.getTopViewCount().then(({ content: suggestions }) => { this.setState({ suggestions }) })
+    request.getTopPlaces().then(({ content: places }) => { this.setState({ places }) })
+    request.getTopSaleOff().then(({ content: sales }) => { this.setState({ sales }) })
+    request.getTopViewCount().then(({ content: suggestions }) => { this.setState({ suggestions }) })
   }
 
   render = () => {
