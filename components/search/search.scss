@@ -27,6 +27,8 @@
 
     .search__item {
       margin-bottom: 16px;
+      display: flex;
+      flex-direction: column;
 
       &:last-child {
         margin-bottom: 0;

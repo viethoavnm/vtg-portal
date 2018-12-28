@@ -66,7 +66,13 @@ class SearchWrapper extends React.Component {
 
   onSearch = () => {
     if (this.props.onSearch) {
-      this.props.onSearch(this.state)
+      this.props.onSearch({
+        night: this.state.night,
+        room: this.state.roomNGuest.room,
+        guest: this.state.roomNGuest.guest,
+        startDate: this.state.startDate.format('DDMMYYYY'),
+        searchText: this.state.searchText
+      })
     }
   }
 

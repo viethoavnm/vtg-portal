@@ -6,8 +6,8 @@
 
 .header {
   background: #488dff;
-  color: #fff;
   padding-top: 8px;
+  color: #fff;
 
   .container {
     display: flex;
@@ -37,12 +37,12 @@
     flex: 1 auto;
     justify-content: flex-end;
 
-    >li {
+    li {
       display: inline-flex;
       align-items: center;
       padding: 0 12px;
       transition: all ease-in-out .45s;
-      border-bottom: 2px solid transparent;
+      opacity: .66;
 
       a {
         color: #fff;
@@ -51,11 +51,8 @@
 
       &:hover {
         cursor: pointer;
-        border-bottom-color: #fff;
-      }
-
-      &.no-hover:hover {
-        border-bottom-color: transparent;
+        opacity: 1;
+        text-shadow: rgba($color: #FFF, $alpha: .55);
       }
     }
   }

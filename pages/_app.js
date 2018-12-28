@@ -15,7 +15,10 @@ import {
   setUserInfo,
   setInfo
 } from 'utils/redux'
+import moment from 'moment';
+import 'moment/locale/vi';
 
+moment.locale('vi')
 const TIMEOUT = 400
 
 if (typeof window !== 'undefined' && window.ReactIntlLocaleData) {

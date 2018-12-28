@@ -7,6 +7,7 @@ import Banner from 'components/banner'
 import Advertisement from './HomeAds'
 import Places from './HomePlaces'
 import request from 'api'
+import Router from 'next/router'
 import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl';
 import './Home.scss'
@@ -20,6 +21,10 @@ class Home extends React.PureComponent {
     request.getTopViewCount().then(({ content: suggestions }) => { this.setState({ suggestions }) })
   }
 
+  onSearch = (values) => {
+    Router.push({ pathname: '/hotel', query: values })
+  }
+
   render = () => {
     const { pageInfo } = this.props
     const { places, sales, suggestions } = this.state
@@ -27,7 +32,7 @@ class Home extends React.PureComponent {
       <div className="home">
         <Banner pageInfo={pageInfo} />
         <div className="container">
-          <Search />
+          <Search onSearch={this.onSearch} />
           <Places items={places} />
           <Advertisement />
           <div className="home__title">

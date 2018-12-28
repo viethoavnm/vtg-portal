@@ -85,5 +85,19 @@
   "%d comments": "{value} nhận xét",
   "Top of selections": "Các lựa chọn nhiều nhất",
   "%d hotels": "{value} khách sạn",
-  "Price from": "Giá từ"
+  "Price from": "Giá từ",
+  "Sort by suggestion": "Sắp xếp theo gợi ý",
+  "Price asc": "Giá tăng dần",
+  "Price desc": "Giá giảm dần",
+  "High rating": "Đánh giá cao",
+  "Promotion": "Khuyến mại",
+  "Price range per night": "Khoảng giá cho 1 đêm",
+  "MIN": "Thấp",
+  "MAX": "Cao",
+  "From": "Từ",
+  "Type of hotel": "Loại hình chỗ ở",
+  "Rating star": "Hạng sao",
+  "Area": "Khu vực",
+  "District": "Quận huyện",
+  "Utils": "Tiện nghi"
 }

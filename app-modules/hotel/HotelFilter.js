@@ -17,19 +17,19 @@ class Filter extends React.Component {
     return (
       <React.Fragment>
         <div className="filter">
-          <span className="title"><FormattedMessage id="FILTER_BY_PRICE" /></span>
+          <span className="title"><FormattedMessage id="Price range per night" /></span>
           <span className="d-flex justify-content-between">
             <FormattedMessage id="MIN" />
             <FormattedMessage id="MAX" />
           </span>
           <Slider range min={0} max={25000000} tipFormatter={formatter} step={100000} value={this.state.prices} onChange={this.onChange('prices')} />
           <span className="price-show">
-            <span><FormattedMessage id="FROM" />: {formatter(this.state.prices[0])} </span> ~
+            <span><FormattedMessage id="From" />: {formatter(this.state.prices[0])} </span> ~
             <span>{formatter(this.state.prices[1])} đ</span>
           </span>
         </div>
         <div className="filter">
-          <span className="title"><FormattedMessage id="FILTER_BY_TYPE" /></span>
+          <span className="title"><FormattedMessage id="Type of hotel" /></span>
           <ul>
             <li><Checkbox>Khách sạn</Checkbox><span>110</span></li>
             <li><Checkbox>Nhà nghỉ</Checkbox><span>2340</span></li>
@@ -41,7 +41,7 @@ class Filter extends React.Component {
           </ul>
         </div>
         <div className="filter">
-          <span className="title"><FormattedMessage id="FILTER_BY_STAR" /></span>
+          <span className="title"><FormattedMessage id="Rating star" /></span>
           <ul>
             <li><Checkbox><Rate disabled value={1} count={1} /></Checkbox><span>66</span></li>
             <li><Checkbox><Rate disabled value={2} count={2} /></Checkbox><span>1120</span></li>
@@ -52,7 +52,7 @@ class Filter extends React.Component {
           </ul>
         </div>
         <div className="filter">
-          <span className="title"><FormattedMessage id="FILTER_BY_LOCATION" /></span>
+          <span className="title"><FormattedMessage id="Area" /></span>
           <ul>
             <li><Checkbox>Trung tâm thành phố</Checkbox><span>2345</span></li>
             <li><Checkbox>Chợ trung tâm</Checkbox><span>678</span></li>
@@ -62,7 +62,7 @@ class Filter extends React.Component {
           </ul>
         </div>
         <div className="filter">
-          <span className="title"><FormattedMessage id="FILTER_BY_AREA" /></span>
+          <span className="title"><FormattedMessage id="District" /></span>
           <ul>
             <li><Checkbox>Thanh Khê</Checkbox><span>89</span></li>
             <li><Checkbox>Sơn Trà</Checkbox><span>65</span></li>
@@ -72,7 +72,7 @@ class Filter extends React.Component {
           </ul>
         </div>
         <div className="filter">
-          <span className="title"><FormattedMessage id="FILTER_BY_ULTIS" /></span>
+          <span className="title"><FormattedMessage id="Utils" /></span>
           <ul>
             <li><Checkbox>Bãi đỗ xe</Checkbox><span>122</span></li>
             <li><Checkbox>Bể bơi</Checkbox><span>867</span></li>
