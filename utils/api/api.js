@@ -47,6 +47,28 @@ const api = (axios) => ({
   },
   getTopViewCount: (page = 1, size = 10) => {
     return axios.get('api/hotel/get-top-by-view-count', { params: { page, size } })
+  },
+  /**API : HOTEL */
+  getHotelById: (id) => {
+    return axios.get('api/hotel/get-by-id/' + id)
+  },
+  getHotelListByNameFTS: (params) => {
+    return axios.get('api/hotel/get-list-by-name-FTS', { params })
+  },
+  getHotelListByStarRank: (params) => {
+    return axios.get('api/hotel/get-list-by-star-rank', { params })
+  },
+  getHotelListToBooking: (params) => {
+    return axios.get('api/hotel/get-list-to-booking', { params: { page, size } })
+  },
+  getStatisticsByPlaceId: (params) => {
+    return axios.get('api/hotel/get-statistics-by-place-id', { params: { page, size } })
+  },
+  getTopBySaleOff: (params) => {
+    return axios.get('api/hotel/get-top-by-view-count', { params: { page, size } })
+  },
+  getTopByViewCount: (params) => {
+    return axios.get('api/hotel/get-top-by-view-count', { params: { page, size } })
   }
 })
 
