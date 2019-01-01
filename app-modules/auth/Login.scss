@@ -6,6 +6,11 @@
   min-height: 100vh;
   background: #fff;
 
+  .ant-form {
+    width: 100%;
+    max-width: 450px;
+  }
+
   &__logo {
     img {
       max-height: 125px;
@@ -16,7 +21,7 @@
 
 .form-login {
   width: 100%;
-  max-width: 300px;
+  max-width: 300px !important;
 
   &__forgot {
     float: right;

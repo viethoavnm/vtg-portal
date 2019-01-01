@@ -1,12 +1,2 @@
-import React from 'react'
-import { unsetToken } from 'utils/auth'
-
-
-export default class Register extends React.Component {
-  componentDidMount() {
-    unsetToken()
-  }
-  render() {
-    return null
-  }
-}
+import dynamic from 'next/dynamic'
+export default dynamic({ loader: () => import('app-modules/auth/Register') })

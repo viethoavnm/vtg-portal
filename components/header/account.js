@@ -9,7 +9,7 @@ const AccountWindow = ({ t }) => (
     content={
       (<ul className="menu-popover">
         <li><a href="/login">{t('Login')}</a></li>
-        <li><a href="/login">{t('Register')}</a></li>
+        <li><a href="/register">{t('Register')}</a></li>
       </ul>)}>
     {t('Account')}
     <Icon type="caret-down" style={{ marginLeft: 4 }} />
