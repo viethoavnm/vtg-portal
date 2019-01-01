@@ -44,6 +44,10 @@ const Banner = ({ pageInfo }) => (
   </div>
 )
 
+Banner.defaultProps = {
+  pageInfo: {}
+}
+
 export default Banner
 const settings = {
   dots: true,

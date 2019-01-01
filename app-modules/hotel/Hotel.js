@@ -1,12 +1,19 @@
 import React from 'react';
+import request from 'api'
+import SortBar from './Sortbar';
+import Filter from './HotelFilter';
 import Search from 'components/search';
 import Banner from 'components/banner';
-import Filter from './HotelFilter';
-import SortBar from './Sortbar';
 import { Icon, Breadcrumb } from 'antd';
+import { connect } from 'react-redux';
 import './Hotel.scss';
 
 class Hotel extends React.Component {
+  state = { content: [], page: 0, size: 10 }
+
+  fetch() {
+    request.getHotelListToBooking();
+  }
 
   onSearch = (params) => {
 
@@ -16,14 +23,14 @@ class Hotel extends React.Component {
 
   }
   render() {
+    const { pageInfo } = this.props;
     return (
       <React.Fragment>
-        <Banner pageInfo={{ contentNames: [] }} />
+        <Banner pageInfo={pageInfo} />
         <div className="container hotel d-flex">
           <div className="hotel-nav">
             <Search vertical />
-            <div className="mini-map">
-            </div>
+            {/* <div className="mini-map"></div> */}
             <Filter />
           </div>
           <div className="hotel-content">
@@ -50,4 +57,4 @@ class Hotel extends React.Component {
   }
 }
 
-export default Hotel;
+export default connect((state) => ({ pageInfo: state.info.HOTEL }))(Hotel);

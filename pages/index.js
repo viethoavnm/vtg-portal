@@ -1,7 +1,7 @@
-import dynamic from 'next/dynamic'
-import { setInfo } from 'utils/redux'
-import request from 'api'
-import Layout from 'components/layout'
+import request from 'api';
+import dynamic from 'next/dynamic';
+import { setInfo } from 'utils/redux';
+import Layout from 'components/layout';
 
 const Homepage = dynamic({ loader: () => import('app-modules/home') })
 
