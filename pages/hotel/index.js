@@ -5,10 +5,10 @@ import Layout from 'components/layout';
 
 const Hotel = dynamic({ loader: () => import('app-modules/hotel/Hotel') })
 
-Hotel.getInitialProps = async ({ store, isServer }) => {
+Hotel.getInitialProps = async ({ store }) => {
   try {
     const info = await request.getPageInfo('HOTEL')
-    if (isServer) store.dispatch(setInfo({ 'HOTEL': info }))
+    store.dispatch(setInfo({ 'HOTEL': info }))
   } catch (error) { }
   return
 }

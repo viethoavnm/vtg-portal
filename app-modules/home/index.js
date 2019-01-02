@@ -7,7 +7,6 @@ import Banner from 'components/banner'
 import Advertisement from './HomeAds'
 import Places from './HomePlaces'
 import request from 'api'
-import Router from 'next/router'
 import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl';
 import './Home.scss'
@@ -22,7 +21,7 @@ class Home extends React.PureComponent {
   }
 
   onSearch = (values) => {
-    Router.push({ pathname: '/hotel', query: values })
+    window.location = '/hotel?'
   }
 
   render = () => {

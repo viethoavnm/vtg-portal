@@ -59,7 +59,7 @@ const api = (axios) => ({
     return axios.get('api/hotel/get-list-by-star-rank', { params })
   },
   getHotelListToBooking: (params) => {
-    return axios.get('api/hotel/get-list-to-booking', { params: { page, size } })
+    return axios.get('api/hotel/get-all', { params })
   },
   getStatisticsByPlaceId: (params) => {
     return axios.get('api/hotel/get-statistics-by-place-id', { params: { page, size } })

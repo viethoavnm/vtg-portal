@@ -2,6 +2,7 @@ import React from 'react';
 import request from 'api'
 import SortBar from './Sortbar';
 import Filter from './HotelFilter';
+import HotelList from './HotelList';
 import Search from 'components/search';
 import Banner from 'components/banner';
 import { Icon, Breadcrumb } from 'antd';
@@ -12,7 +13,11 @@ class Hotel extends React.Component {
   state = { content: [], page: 0, size: 10 }
 
   fetch() {
-    request.getHotelListToBooking();
+    request.getHotelListToBooking()
+      .then((data) => {
+        this.setState({ ...data })
+      })
+      .catch();
   }
 
   onSearch = (params) => {
@@ -20,8 +25,9 @@ class Hotel extends React.Component {
   }
 
   componentDidMount() {
-
+    this.fetch();
   }
+
   render() {
     const { pageInfo } = this.props;
     return (
@@ -50,6 +56,7 @@ class Hotel extends React.Component {
               <span>Khách sạn tại thành phố Đà Nẵng</span>
             </div>
             <SortBar />
+            <HotelList {...this.state} />
           </div>
         </div>
       </React.Fragment>

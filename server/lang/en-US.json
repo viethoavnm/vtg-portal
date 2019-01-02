@@ -99,5 +99,8 @@
   "Rating star": "Hạng sao",
   "Area": "Khu vực",
   "District": "Quận huyện",
-  "Utils": "Tiện nghi"
+  "Utils": "Tiện nghi",
+  "ROOM_AC": "Điều hòa",
+  "ROOM_PACKING": "Bãi đậu xe",
+  "ROOM_WIFI": "Wi-Fi"
 }
