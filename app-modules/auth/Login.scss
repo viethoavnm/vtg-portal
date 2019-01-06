@@ -8,11 +8,12 @@
 .auth {
   width: 360px;
   margin-right: 64px;
-
+  
   .ant-form {
     background: #FFFFFF;
     padding: 45px;
     border-radius: 4px;
+    min-height: 500px;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 
     .ant-input {

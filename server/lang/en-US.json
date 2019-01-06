@@ -121,5 +121,8 @@
   "Confirm password": "Xác nhận mật khẩu",
   "Fullname": "Tên",
   "I have read the": "Tôi đã đọc kỹ các",
-  "agreement": "điều khoản"
+  "agreement": "điều khoản",
+  "Recovery": "Khôi phục",
+  "Recovery successfully!": "Khôi phục thành công!",
+  "Let's check you mailbox to access your account.": "Hãy kiểm tra hộp thư điện tử của bạn để hoàn thành quá trình khôi phục mật khẩu."
 }
