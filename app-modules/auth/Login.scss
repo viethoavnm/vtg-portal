@@ -8,7 +8,40 @@
 .auth {
   width: 360px;
   margin-right: 64px;
-  top: 50%;
+
+  .ant-form {
+    background: #FFFFFF;
+    padding: 45px;
+    border-radius: 4px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+
+    .ant-input {
+      background: #f2f2f2;
+      font-size: 14px;
+      outline: 0;
+      border: 0;
+    }
+
+    .ant-btn {
+      width: 100%;
+      outline: 0;
+      border: 0;
+    }
+
+    .ant-icon {
+      color: rgba(27, 27, 27, 0.6)
+    }
+  }
+
+  @media (max-width: 575.98px) {
+    margin: 0;
+    width: 100%;
+
+    .ant-form {
+      box-shadow: none;
+      padding: 16px;
+    }
+  }
 
   &--reg {
     width: 500px;
@@ -46,29 +79,7 @@
     font-size: 2rem;
   }
 
-  .ant-form {
-    background: #FFFFFF;
-    padding: 45px;
-    border-radius: 4px;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 
-    .ant-input {
-      background: #f2f2f2;
-      font-size: 14px;
-      outline: 0;
-      border: 0;
-    }
-
-    .ant-btn {
-      width: 100%;
-      outline: 0;
-      border: 0;
-    }
-
-    .ant-icon {
-      color: rgba(27, 27, 27, 0.6)
-    }
-  }
 }
 
 .social-btn {
