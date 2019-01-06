@@ -9,7 +9,6 @@ Intl.NumberFormat = IntlPolyfill.NumberFormat
 Intl.DateTimeFormat = IntlPolyfill.DateTimeFormat
 
 const { readFileSync } = require('fs')
-const accepts = require('accepts')
 
 const localeDataCache = new Map()
 const getLocaleDataScript = (locale) => {
@@ -39,7 +38,6 @@ app.prepare()
     }
 
     server.get('*', (req, res) => {
-      const accept = accepts(req)
       const locale = 'en-US'
       req.locale = locale
       req.localeDataScript = getLocaleDataScript(locale)

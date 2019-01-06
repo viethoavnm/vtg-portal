@@ -1,8 +1,8 @@
-export default function slugify(string) {
+export default function slugify(string = '') {
   const a = 'àáäâãåèéëêìíïîòóöôùúüûñçßÿœæŕśńṕẃǵǹḿǘẍźḧ·/_,:;'
   const b = 'aaaaaaeeeeiiiioooouuuuncsyoarsnpwgnmuxzh------'
   const p = new RegExp(a.split('').join('|'), 'g')
-  return string.toString().toLowerCase()
+  return new String(string).toString().toLowerCase()
     .replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a")
     .replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e")
     .replace(/ì|í|ị|ỉ|ĩ/g, "i")
