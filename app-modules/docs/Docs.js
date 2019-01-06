@@ -9,8 +9,8 @@ class Docs extends React.Component {
   componentDidMount() {
     this.setState({ loading: true })
     request.getSetting(this.props.id)
-      .then(({ value }) => {
-        this.setState({ content: value, loading: false })
+      .then((content) => {
+        this.setState({ content, loading: false })
       })
   }
   render() {

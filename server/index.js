@@ -9,11 +9,8 @@ Intl.NumberFormat = IntlPolyfill.NumberFormat
 Intl.DateTimeFormat = IntlPolyfill.DateTimeFormat
 
 const { readFileSync } = require('fs')
-const { basename } = require('path')
 const accepts = require('accepts')
-const glob = require('glob')
 
-const supportedLanguages = glob.sync('./lang/*.json').map((f) => basename(f, '.json'))
 const localeDataCache = new Map()
 const getLocaleDataScript = (locale) => {
   const lang = locale.split('-')[0]

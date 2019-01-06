@@ -8,3 +8,5 @@ export const G_SECRET = `${process.env.G_SECRET}`;
 
 export const TOKEN_KEY = 'jwt';
 export const LOGOUT_KEY = 'logout';
+export const LOGGED_IN_KEY = 'logged_in';
+export const ADD_NEW_ITEM = 'add_item';
