@@ -1,27 +1,25 @@
-import React from 'react'
-import Loader from 'components/loader'
+import React from 'react';
+import request from 'api';
+import moment from 'moment';
+import { LOGOUT_KEY } from 'consts';
 import { LocaleProvider } from 'antd';
-import NextApp, { Container } from 'next/app'
-import { PageTransition } from 'next-page-transitions'
-import { IntlProvider, addLocaleData } from 'react-intl'
-import { getUserFromServerCookie, getUserFromLocalCookie } from 'utils/auth'
-import request from 'api'
-import withRedux from 'next-redux-wrapper'
-import { Provider } from 'react-redux'
-import viVN from 'antd/lib/locale-provider/vi_VN'
+import { Provider } from 'react-redux';
+import withRedux from 'next-redux-wrapper';
+import NextApp, { Container } from 'next/app';
+import viVN from 'antd/lib/locale-provider/vi_VN';
+import { IntlProvider, addLocaleData } from 'react-intl';
+import { getUserFromServerCookie, getUserFromLocalCookie } from 'utils/auth';
 import {
   initStore,
   setUserInfo,
+  requestLogout,
   setClock,
   setInfo
-} from 'utils/redux'
-import moment from 'moment';
+} from 'utils/redux';
 import 'moment/locale/vi';
 import 'antd/dist/antd.less';
-import { LOGOUT_KEY } from 'consts';
 
-moment.locale('vi')
-const TIMEOUT = 400
+moment.locale('vi');
 
 if (typeof window !== 'undefined' && window.ReactIntlLocaleData) {
   Object.keys(window.ReactIntlLocaleData).forEach((lang) => {
@@ -32,7 +30,7 @@ if (typeof window !== 'undefined' && window.ReactIntlLocaleData) {
 class App extends NextApp {
   logout = (e) => {
     if (e.key === LOGOUT_KEY)
-      this.props.store.dispatch((setUserInfo(false)))
+      this.props.store.dispatch(requestLogout());
   }
 
   componentDidMount() {
@@ -57,20 +55,11 @@ class App extends NextApp {
         <Provider store={store}>
           <IntlProvider locale={locale} messages={messages} initialNow={now}>
             <LocaleProvider locale={viVN}>
-              <PageTransition
-                timeout={TIMEOUT}
-                loadingDelay={400}
-                loadingComponent={<Loader />}
-                classNames='page-transition'
-                loadingClassNames='loading-indicator'
-                loadingTimeout={{ enter: TIMEOUT, exit: 0 }}
-              >
-                {Component.Layout ?
-                  <Component.Layout>
-                    <Component {...pageProps} />
-                  </Component.Layout>
-                  : <Component {...pageProps} />}
-              </PageTransition>
+              {Component.Layout ?
+                <Component.Layout>
+                  <Component {...pageProps} />
+                </Component.Layout>
+                : <Component {...pageProps} />}
             </LocaleProvider>
           </IntlProvider>
         </Provider>
@@ -83,14 +72,15 @@ App.getInitialProps = async ({ Component, ctx }) => {
   const { locale, messages } = ctx.req || window.__NEXT_DATA__.props;
   try {
     const { store, isServer } = ctx;
-    let loggedUser = {};
+    let loggedUser;
     if (isServer) {
       store.dispatch(setClock());
       loggedUser = getUserFromServerCookie(ctx.req);
     } else {
       loggedUser = getUserFromLocalCookie();
     }
-    store.dispatch(setUserInfo(loggedUser));
+    if (!!loggedUser)
+      store.dispatch(setUserInfo(loggedUser));
     const info = JSON.parse(await request.getSetting('CompanyProfile'));
     store.dispatch(setInfo({ 'COMMON': info }));
   } catch (error) { }

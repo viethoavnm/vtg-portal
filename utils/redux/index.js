@@ -1,18 +1,21 @@
-import { createStore, applyMiddleware } from 'redux'
-import { composeWithDevTools } from 'redux-devtools-extension'
-import thunkMiddleware from 'redux-thunk'
+import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import thunkMiddleware from 'redux-thunk';
+import { setToken, unsetToken } from 'utils/auth';
 
 const initState = {
   lastUpdate: 0,
-  user: false,
+  user: {},
+  loggedIn: false,
   info: {
     'COMMON': {}
   }
 }
 
-const SET_CLOCK = 'SET_CLOCK'
-const SET_INFO = 'SET_INFO'
-const SET_USER_INFO = 'SET_USER_INFO'
+const LOGGED_OUT = 'LOGGED_OUT';
+const SET_INFO = 'SET_INFO';
+const SET_CLOCK = 'SET_CLOCK';
+const SET_USER_INFO = 'SET_USER_INFO';
 
 /**
  * REDUX : ACTION HANDLE
@@ -20,7 +23,8 @@ const SET_USER_INFO = 'SET_USER_INFO'
 const actionHandlers = {
   [SET_CLOCK]: (state, action) => ({ ...state, lastUpdate: action.payload }),
   [SET_INFO]: (state, action) => ({ ...state, info: { ...state.info, ...action.payload } }),
-  [SET_USER_INFO]: (state, action) => ({ ...state, user: action.payload })
+  [SET_USER_INFO]: (state, action) => ({ ...state, loggedIn: true, user: action.payload }),
+  [LOGGED_OUT]: (state) => ({ ...state, user: {}, loggedIn: false })
 }
 
 /**
@@ -41,7 +45,17 @@ export const setUserInfo = (data) => ({
   payload: data
 })
 
+export const requestLogin = (token, user) => {
+  setToken(token);
+  return (dispatch) => {
+    dispatch(setUserInfo(user));
+  }
+}
 
+export const requestLogout = () => {
+  unsetToken();
+  return { type: LOGGED_OUT };
+}
 /**
  * REDUX : STORE
  */

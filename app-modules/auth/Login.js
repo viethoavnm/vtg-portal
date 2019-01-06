@@ -1,17 +1,14 @@
-import React from 'react'
-import Axios from 'axios'
-import { Form, Icon, Input, Button, Checkbox } from 'antd'
-import { BASE_URL } from 'consts'
-import { setToken } from 'utils/auth'
-import { injectIntl } from 'react-intl'
-import { connect } from 'react-redux'
-import Router from 'next/router'
-import Head from 'next/head'
-import './Login.scss'
-import {
-  FB_APP_ID,
-  G_APP_ID
-} from 'consts'
+import React from 'react';
+import Axios from 'axios';
+import Head from 'next/head';
+import Router from 'next/router';
+import jwtDecode from 'jwt-decode';
+import { connect } from 'react-redux';
+import { injectIntl } from 'react-intl';
+import { requestLogin } from 'utils/redux';
+import { FB_APP_ID, G_APP_ID, BASE_URL } from 'consts';
+import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import './Login.scss';
 
 const FormItem = Form.Item
 
@@ -41,7 +38,7 @@ class NormalLoginForm extends React.Component {
           })
           .then(({ data }) => {
             this.setState({ loading: false })
-            setToken(data.access_token)
+            this.props.requestLogin(data.access_token, jwtDecode(data.access_token))
             if (!!window.history.length)
               Router.back()
             else
@@ -87,7 +84,7 @@ class NormalLoginForm extends React.Component {
     Axios.post(BASE_URL + 'api/user/facebook-login', data)
       .then(({ data: { value } }) => {
         this.setState({ loading: false })
-        setToken(value.access_token)
+        this.props.requestLogin(value.access_token, jwtDecode(value.access_token))
         if (!!window.history.length)
           Router.back()
         else
@@ -172,4 +169,4 @@ class NormalLoginForm extends React.Component {
 
 const WrappedNormalLoginForm = Form.create()(NormalLoginForm)
 
-export default injectIntl(connect((state) => ({ isAuth: !!state.user }))(WrappedNormalLoginForm))
+export default injectIntl(connect((state) => ({ isAuth: state.loggedIn }), { requestLogin })(WrappedNormalLoginForm))

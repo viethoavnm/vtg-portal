@@ -41,7 +41,7 @@ const Header = ({ isAuthenticated, user, info, intl }) => {
 }
 
 export default injectIntl(connect((state) => ({
-  isAuthenticated: !!state.user,
+  isAuthenticated: state.loggedIn,
   user: state.user,
   info: state.info.COMMON
 }))(Header))
