@@ -1,2 +1,2 @@
 import dynamic from 'next/dynamic'
-export default dynamic({ loader: () => import('../../app-modules/auth/Forgot') })
+export default dynamic({ loader: () => import('app-modules/auth/Forgot') })

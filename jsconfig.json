@@ -3,6 +3,7 @@
     "baseUrl": "./",
     "paths": {
       "components": ["./components"],
+      "app-modules": ["./app-modules"],
       "utils": ["./utils"],
       "api": ["./utils/api"],
       "icons": ["./asserts/icons"],

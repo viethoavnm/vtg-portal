@@ -1,6 +1,7 @@
 {
   "presets": ["next/babel"],
   "plugins": [
+    ["@babel/plugin-proposal-decorators", { "decoratorsBeforeExport": true }],
     [
       "import",
       {
@@ -14,6 +15,7 @@
         "root": ["./"],
         "alias": {
           "components": "./components",
+          "app-modules": "./app-modules",
           "utils": "./utils",
           "api": "./utils/api",
           "icons": "./asserts/icons",
