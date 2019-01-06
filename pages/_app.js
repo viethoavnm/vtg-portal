@@ -4,19 +4,21 @@ import { LocaleProvider } from 'antd';
 import NextApp, { Container } from 'next/app'
 import { PageTransition } from 'next-page-transitions'
 import { IntlProvider, addLocaleData } from 'react-intl'
-import { getUserFromServerCookie } from 'utils/auth'
+import { getUserFromServerCookie, getUserFromLocalCookie } from 'utils/auth'
 import request from 'api'
 import withRedux from 'next-redux-wrapper'
 import { Provider } from 'react-redux'
 import viVN from 'antd/lib/locale-provider/vi_VN'
 import {
   initStore,
-  renderClock,
   setUserInfo,
+  setClock,
   setInfo
 } from 'utils/redux'
 import moment from 'moment';
 import 'moment/locale/vi';
+import 'antd/dist/antd.less';
+import { LOGOUT_KEY } from 'consts';
 
 moment.locale('vi')
 const TIMEOUT = 400
@@ -29,7 +31,7 @@ if (typeof window !== 'undefined' && window.ReactIntlLocaleData) {
 
 class App extends NextApp {
   logout = (e) => {
-    if (e.key === 'logout')
+    if (e.key === LOGOUT_KEY)
       this.props.store.dispatch((setUserInfo(false)))
   }
 
@@ -78,16 +80,19 @@ class App extends NextApp {
 
 App.getInitialProps = async ({ Component, ctx }) => {
   const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {}
-  const { locale, messages } = ctx.req || window.__NEXT_DATA__.props
+  const { locale, messages } = ctx.req || window.__NEXT_DATA__.props;
   try {
-    const { store, isServer } = ctx
+    const { store, isServer } = ctx;
+    let loggedUser = {};
     if (isServer) {
-      const loggedUser = getUserFromServerCookie(ctx.req)
-      const info = JSON.parse((await request.getSetting('1')).value);
-      store.dispatch(renderClock())
-      store.dispatch(setUserInfo(loggedUser))
-      store.dispatch(setInfo({ 'COMMON': info }))
+      store.dispatch(setClock());
+      loggedUser = getUserFromServerCookie(ctx.req);
+    } else {
+      loggedUser = getUserFromLocalCookie();
     }
+    store.dispatch(setUserInfo(loggedUser));
+    const info = JSON.parse(await request.getSetting('CompanyProfile'));
+    store.dispatch(setInfo({ 'COMMON': info }));
   } catch (error) { }
   return { pageProps, locale, messages }
 }

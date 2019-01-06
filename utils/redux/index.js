@@ -10,7 +10,7 @@ const initState = {
   }
 }
 
-const RENDER_CLOCK = 'RENDER_CLOCK'
+const SET_CLOCK = 'SET_CLOCK'
 const SET_INFO = 'SET_INFO'
 const SET_USER_INFO = 'SET_USER_INFO'
 
@@ -18,7 +18,7 @@ const SET_USER_INFO = 'SET_USER_INFO'
  * REDUX : ACTION HANDLE
  */
 const actionHandlers = {
-  [RENDER_CLOCK]: (state, action) => ({ ...state, lastUpdate: action.payload }),
+  [SET_CLOCK]: (state, action) => ({ ...state, lastUpdate: action.payload }),
   [SET_INFO]: (state, action) => ({ ...state, info: { ...state.info, ...action.payload } }),
   [SET_USER_INFO]: (state, action) => ({ ...state, user: action.payload })
 }
@@ -26,8 +26,8 @@ const actionHandlers = {
 /**
  * REDUX : ACTION
  */
-export const renderClock = () => ({
-  type: RENDER_CLOCK,
+export const setClock = () => ({
+  type: SET_CLOCK,
   payload: Date.now()
 })
 

@@ -1,56 +1,38 @@
-import jwtDecode from 'jwt-decode'
-import Cookie from 'js-cookie'
-
-const getQueryParams = () => {
-  const params = {}
-  window.location.href.replace(/([^(?|#)=&]+)(=([^&]*))?/g, ($0, $1, $2, $3) => {
-    params[$1] = $3
-  })
-  return params
-}
-
-export const extractInfoFromHash = () => {
-  if (!process.browser) {
-    return undefined
-  }
-  const {id_token, state} = getQueryParams()
-  return {token: id_token, secret: state}
-}
+import Cookie from 'js-cookie';
+import jwtDecode from 'jwt-decode';
+import { TOKEN_KEY, LOGOUT_KEY } from 'consts';
 
 export const setToken = (token) => {
   if (!process.browser) {
-    return
+    return;
   }
-  Cookie.set('user', jwtDecode(token))
-  Cookie.set('jwt', token)
+  Cookie.set(TOKEN_KEY, token);
 }
 
 export const unsetToken = () => {
   if (!process.browser) {
-    return
+    return;
   }
-  Cookie.remove('jwt')
-  Cookie.remove('user')
-  Cookie.remove('secret')
-  window.localStorage.setItem('logout', Date.now())
+  Cookie.remove(TOKEN_KEY);
+  window.localStorage.setItem(LOGOUT_KEY, Date.now());
 }
 
 export const getUserFromServerCookie = (req) => {
   if (!req.headers.cookie) {
-    return undefined
+    return undefined;
   }
-  const jwtCookie = req.headers.cookie.split(';').find(c => c.trim().startsWith('jwt='))
+  const jwtCookie = req.headers.cookie.split(';').find(c => c.trim().startsWith(`${TOKEN_KEY}=`))
   if (!jwtCookie) {
-    return undefined
+    return undefined;
   }
   const jwt = jwtCookie.split('=')[1]
-  return jwtDecode(jwt)
+  return jwtDecode(jwt);
 }
 
 export const getUserFromLocalCookie = () => {
-  return Cookie.getJSON('user')
+  const jwt = Cookie.getJSON(TOKEN_KEY);
+  if (!jwt) {
+    return undefined;
+  }
+  return jwtDecode(jwt);
 }
-
-export const setSecret = (secret) => Cookie.set('secret', secret)
-
-export const checkSecret = (secret) => Cookie.get('secret') === secret

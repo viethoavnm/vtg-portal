@@ -1,14 +1,14 @@
-const fs = require('fs')
-const path = require('path')
-const webpack = require('webpack')
-const Dotenv = require('dotenv-webpack')
-const withSass = require('@zeit/next-sass')
-const withLess = require('@zeit/next-less')
-const withBundleAnalyzer = require('@zeit/next-bundle-analyzer')
-const lessToJS = require('less-vars-to-js')
+const fs = require('fs');
+const path = require('path');
+const webpack = require('webpack');
+const Dotenv = require('dotenv-webpack');
+const withSass = require('@zeit/next-sass');
+const withLess = require('@zeit/next-less');
+const withBundleAnalyzer = require('@zeit/next-bundle-analyzer');
+const lessToJS = require('less-vars-to-js');
 
 if (typeof require !== 'undefined') {
-  require.extensions['.less'] = (file) => { }
+  require.extensions['.less'] = (file) => { };
 }
 
 const themeVariables = lessToJS(
