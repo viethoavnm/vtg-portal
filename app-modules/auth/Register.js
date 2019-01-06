@@ -1,14 +1,16 @@
 import React from 'react';
 import Axios from 'axios';
+import Link from 'next/link';
 import Router from 'next/router';
 import { BASE_URL } from 'consts';
 import { connect } from 'react-redux';
-import { injectIntl } from 'react-intl';
-import { Form, Input, Checkbox, Button, Modal } from 'antd';
+import { injectIntl, FormattedMessage } from 'react-intl';
+import { Form, Input, Checkbox, Button, Modal, Icon } from 'antd';
 import './Login.scss';
 
 class RegistrationForm extends React.Component {
   state = { confirmDirty: false, loading: false, agree: false };
+  t = (id, values) => (this.props.intl.formatMessage({ id }, values));
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -19,8 +21,8 @@ class RegistrationForm extends React.Component {
           .then(() => {
             this.setState({ loading: false })
             Modal.success({
-              title: 'Register successfully!',
-              content: 'Press ok to go to login page',
+              title: this.t('Register successfully!'),
+              content: this.t('Press ok to go to login page'),
               okText: 'OK',
               onOk: () => { Router.push('/login') }
             })
@@ -37,7 +39,7 @@ class RegistrationForm extends React.Component {
   compareToFirstPassword = (rule, value, callback) => {
     const form = this.props.form;
     if (value && value !== form.getFieldValue('password')) {
-      callback('Two passwords that you enter is inconsistent!');
+      callback(this.t('Two passwords that you enter is inconsistent!'));
     } else {
       callback();
     }
@@ -65,13 +67,13 @@ class RegistrationForm extends React.Component {
 
   emailOption = {
     rules: [
-      { type: 'email', message: 'The input is not valid E-mail!' },
-      { required: true, message: 'Please input your E-mail!' }],
+      { type: 'email', message: this.t('The input is not valid E-mail!') },
+      { required: true, message: this.t('Please input your E-mail!') }],
   }
 
   passwordOption = {
     rules: [{
-      required: true, message: 'Please input your password!', whitespace: false
+      required: true, message: this.t('Please input your password!'), whitespace: false
     }, {
       validator: this.validateToNextPassword,
     }],
@@ -79,62 +81,73 @@ class RegistrationForm extends React.Component {
 
   confirmOption = {
     rules: [{
-      required: true, message: 'Please confirm your password!',
+      required: true, message: this.t('Please confirm your password!'),
     }, {
       validator: this.compareToFirstPassword,
     }],
   }
 
   nameOption = {
-    rules: [{ required: true, message: 'Please input your name!', whitespace: true }],
+    rules: [{ required: true, message: this.t('Please input your username!'), whitespace: true }],
   }
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
-      <div className="auth">
-        <div className="auth__logo">
-          <a href="/"><img src="/static/images/logo.png" alt="spetrip logo" /></a>
+      <div className="auth-nest container">
+        <div className="auth auth--reg">
+          <Form onSubmit={this.handleSubmit}>
+            <div className="auth__back">
+              <Link href="/login">
+                <a>
+                  <Icon type="left" />
+                  <FormattedMessage id="Back" />
+                </a>
+              </Link>
+            </div>
+            <h3 className="auth__title"><FormattedMessage id="Register" /></h3>
+            <Form.Item {...formItemLayout} label="E-mail" >
+              {getFieldDecorator('email', this.emailOption)(
+                <Input placeholder={this.t('Input your E-mail!')} />
+              )}
+            </Form.Item>
+            <Form.Item  {...formItemLayout} label={this.t("Username")}>
+              {getFieldDecorator('username', this.nameOption)(
+                <Input placeholder={this.t('Input your username!')} />
+              )}
+            </Form.Item>
+            <Form.Item
+              {...formItemLayout}
+              label={this.t("Password")} >
+              {getFieldDecorator('password', this.passwordOption)(
+                <Input type="password" placeholder={this.t('Input your password!')} />
+              )}
+            </Form.Item>
+            <Form.Item
+              {...formItemLayout}
+              label={this.t("Confirm password")}  >
+              {getFieldDecorator('confirm', this.confirmOption)(
+                <Input type="password" onBlur={this.handleConfirmBlur} placeholder={this.t('Input confirm your password!')} />
+              )}
+            </Form.Item>
+            <Form.Item  {...formItemLayout} label={this.t('Fullname')}>
+              {getFieldDecorator('name', this.nameOption)(
+                <Input placeholder={this.t('Input your name!')} />
+              )}
+            </Form.Item>
+            <Form.Item {...tailFormItemLayout}>
+              <Checkbox onChange={this.onCheckboxChange}><FormattedMessage id="I have read the" /> <a href=""><FormattedMessage id="agreement" /></a></Checkbox>
+            </Form.Item>
+            <Form.Item {...tailFormItemLayout}>
+              <Button
+                type="primary"
+                htmlType="submit"
+                loading={this.state.loading}
+                disabled={!this.state.agree}>
+                <FormattedMessage id="Register now" />
+              </Button>
+            </Form.Item>
+          </Form>
         </div>
-        <Form onSubmit={this.handleSubmit}>
-          <Form.Item {...formItemLayout} label="E-mail" >
-            {getFieldDecorator('email', this.emailOption)(
-              <Input />
-            )}
-          </Form.Item>
-          <Form.Item  {...formItemLayout} label={"Username"}>
-            {getFieldDecorator('username', this.nameOption)(
-              <Input />
-            )}
-          </Form.Item>
-          <Form.Item
-            {...formItemLayout}
-            label="Password" >
-            {getFieldDecorator('password', this.passwordOption)(
-              <Input type="password" />
-            )}
-          </Form.Item>
-          <Form.Item
-            {...formItemLayout}
-            label="Confirm Password"  >
-            {getFieldDecorator('confirm', this.confirmOption)(
-              <Input type="password" onBlur={this.handleConfirmBlur} />
-            )}
-          </Form.Item>
-          <Form.Item  {...formItemLayout} label={"Name"}>
-            {getFieldDecorator('name', this.nameOption)(
-              <Input />
-            )}
-          </Form.Item>
-          <Form.Item {...tailFormItemLayout}>
-            <Checkbox onChange={this.onCheckboxChange}>I have read the <a href="">agreement</a></Checkbox>
-          </Form.Item>
-          <Form.Item {...tailFormItemLayout}>
-            <Button type="primary"
-              htmlType="submit"
-              loading={this.state.loading}
-              disabled={!this.state.agree}>Register</Button>
-          </Form.Item>
-        </Form>
       </div>
     );
   }

@@ -100,9 +100,10 @@ class NormalLoginForm extends React.Component {
     const { loading, error } = this.props
     const validateStatus = error ? 'error' : loading ? 'validating' : undefined
     return (
-      <div className="auth">
-        <Head>
-          <script>{`
+      <div className="auth-nest container">
+        <div className="auth">
+          <Head>
+            <script>{`
             (function(d, s, id) {
               var js, fjs = d.getElementsByTagName(s)[0];
               if (d.getElementById(id)) return;
@@ -110,8 +111,8 @@ class NormalLoginForm extends React.Component {
               js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.2&appId=${FB_APP_ID}&autoLogAppEvents=1';
               fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));`}
-          </script>
-          <script>{`
+            </script>
+            <script>{`
              function start() {
               gapi.load('auth2', function() {
                 auth2 = gapi.auth2.init({
@@ -119,52 +120,51 @@ class NormalLoginForm extends React.Component {
                 });
               });
             }`}
-          </script>
-          <script src="https://apis.google.com/js/client:platform.js?onload=start" async defer></script>
-        </Head>
-        <div className="auth__logo">
-          <a href="/"><img src="/static/images/logo.png" alt="spetrip logo" /></a>
+            </script>
+            <script src="https://apis.google.com/js/client:platform.js?onload=start" async defer></script>
+          </Head>
+          <Form onSubmit={this.handleSubmit} className="form-login">
+            <div className="auth__logo">
+              <a href="/"><img src="/static/images/logo.png" alt="spetrip logo" /></a>
+            </div>
+            <FormItem validateStatus={validateStatus}>
+              {getFieldDecorator('username', {
+                rules: [{ required: true, message: this.t('Username invalid') }],
+              })(
+                <Input prefix={<Icon type="user" />} placeholder={this.t('Username')} />
+              )}
+            </FormItem>
+            <FormItem validateStatus={validateStatus}>
+              {getFieldDecorator('password', {
+                rules: [{ required: true, message: this.t('Password invalid') }],
+              })(
+                <Input prefix={<Icon type="lock" />} type="password" placeholder={this.t('Password')} />
+              )}
+            </FormItem>
+            <FormItem>
+              {getFieldDecorator('remember', {
+                valuePropName: 'checked',
+                initialValue: true,
+              })(
+                <Checkbox>{this.t('Remember me')}</Checkbox>
+              )}
+              <a className="form-login__forgot" href="/forgot">{this.t('Forgot password')}</a>
+            </FormItem>
+            <Button type="primary" htmlType="submit" className="form-login__btn-login" loading={this.state.loading}>
+              {this.t('Login')}
+            </Button>
+            <div className="auth__spr">{this.t('Login or')}</div>
+            <div className="auth__social">
+              <div className="social-btn social-btn--fb" onClick={this.fbLogin}>
+                <Icon type="facebook" theme="filled" />
+              </div>
+              <div className="social-btn social-btn--gp" onClick={this.gLogin}>
+                <Icon type="google" />
+              </div>
+            </div>
+            {this.t('Login or')} <a href="/register">{this.t('Register now')}!</a>
+          </Form>
         </div>
-        <Form onSubmit={this.handleSubmit} className="form-login">
-          <FormItem validateStatus={validateStatus}>
-            {getFieldDecorator('username', {
-              rules: [{ required: true, message: this.t('Username invalid') }],
-            })(
-              <Input prefix={<Icon type="user" />} placeholder={this.t('Username')} />
-            )}
-          </FormItem>
-          <FormItem validateStatus={validateStatus}>
-            {getFieldDecorator('password', {
-              rules: [{ required: true, message: this.t('Password invalid') }],
-            })(
-              <Input prefix={<Icon type="lock" />} type="password" placeholder={this.t('Password')} />
-            )}
-          </FormItem>
-          <FormItem>
-            {getFieldDecorator('remember', {
-              valuePropName: 'checked',
-              initialValue: true,
-            })(
-              <Checkbox>{this.t('Remember me')}</Checkbox>
-            )}
-            <a className="form-login__forgot" href="/forgot">{this.t('Forgot password')}</a>
-          </FormItem>
-          <Button type="primary" htmlType="submit" className="form-login__btn-login" loading={this.state.loading}>
-            {this.t('Login')}
-          </Button>
-          <div style={{ textAlign: 'center', marginBottom: 8, fontSize: 12 }}>{this.t('Login or')}</div>
-          <div>
-            <Button type="primary" icon="facebook" onClick={this.fbLogin} style={{ width: '100%', marginBottom: 8 }}>
-              {this.t('Login via Facebook')}
-            </Button>
-          </div>
-          <div>
-            <Button type="primary" icon="google" onClick={this.gLogin} style={{ width: '100%', marginBottom: 8 }}>
-              {this.t('Login via Google')}
-            </Button>
-          </div>
-          {this.t('Login or')} <a href="/register">{this.t('Register now')}!</a>
-        </Form>
       </div>
     )
   }
