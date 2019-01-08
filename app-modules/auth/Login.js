@@ -1,8 +1,6 @@
 import React from 'react';
 import Axios from 'axios';
 import Head from 'next/head';
-import Router from 'next/router';
-import jwtDecode from 'jwt-decode';
 import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
 import { requestLogin } from 'utils/redux';
@@ -30,11 +28,7 @@ class NormalLoginForm extends React.Component {
           })
           .then(({ data }) => {
             this.setState({ loading: false })
-            this.props.requestLogin(data.access_token, jwtDecode(data.access_token))
-            if (!!window.history.length)
-              Router.back()
-            else
-              Router.push('/')
+            this.props.requestLogin(data.access_token)
           })
           .catch(() => {
             this.setState({ loading: false })
@@ -76,11 +70,7 @@ class NormalLoginForm extends React.Component {
     Axios.post(BASE_URL + 'api/user/facebook-login', data)
       .then(({ data: { value } }) => {
         this.setState({ loading: false })
-        this.props.requestLogin(value.access_token, jwtDecode(value.access_token))
-        if (!!window.history.length)
-          Router.back()
-        else
-          Router.push('/')
+        this.props.requestLogin(value.access_token)
       })
   }
 

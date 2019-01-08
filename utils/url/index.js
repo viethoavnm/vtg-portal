@@ -1,3 +1,5 @@
+import Router from 'next/router';
+
 export default function slugify(string = '') {
   const a = 'àáäâãåèéëêìíïîòóöôùúüûñçßÿœæŕśńṕẃǵǹḿǘẍźḧ·/_,:;'
   const b = 'aaaaaaeeeeiiiioooouuuuncsyoarsnpwgnmuxzh------'
@@ -16,4 +18,23 @@ export default function slugify(string = '') {
     .replace(/[^\w-]+/g, '') // Remove all non-word characters
     .replace(/--+/g, '-') // Replace multiple — with single -
     .replace(/^-+/, '') // Trim — from start of text .replace(/-+$/, '') // Trim — from end of text
+}
+
+let attemptUrl = '/';
+
+export function saveAttemptUrl(url) {
+  switch (url) {
+    case '/login':
+    case '/register':
+    case '/forgot':
+    case '/logout':
+      break;
+    default:
+      attemptUrl = url;
+      break;
+  }
+}
+
+export function redirectToAttemptedUrl() {
+  Router.push(attemptUrl);
 }

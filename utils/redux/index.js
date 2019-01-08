@@ -1,7 +1,9 @@
-import { createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import jwt from 'jwt-decode';
 import thunkMiddleware from 'redux-thunk';
 import { setToken, unsetToken } from 'utils/auth';
+import { redirectToAttemptedUrl } from 'utils/url';
+import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 const initState = {
   lastUpdate: 0,
@@ -45,16 +47,21 @@ export const setUserInfo = (data) => ({
   payload: data
 })
 
-export const requestLogin = (token, user) => {
+export const requestLogin = (token) => {
   setToken(token);
+  const user = jwt(token);
   return (dispatch) => {
     dispatch(setUserInfo(user));
+    redirectToAttemptedUrl();
   }
 }
 
 export const requestLogout = () => {
   unsetToken();
-  return { type: LOGGED_OUT };
+  return (dispatch) => {
+    dispatch({ type: LOGGED_OUT });
+    redirectToAttemptedUrl();
+  }
 }
 /**
  * REDUX : STORE

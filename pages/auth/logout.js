@@ -1,13 +1,14 @@
-import React from 'react'
-import Router from 'next/router'
-import { unsetToken } from 'utils/auth'
+import React from 'react';
+import { connect } from 'react-redux';
+import { requestLogout } from 'utils/redux';
 
-export default class Register extends React.Component {
+class Register extends React.Component {
   componentDidMount() {
-    unsetToken()
-    Router.back()
+    this.props.logout();
   }
   render() {
-    return null
+    return null;
   }
 }
+
+export default connect(null, { logout: requestLogout })(Register);

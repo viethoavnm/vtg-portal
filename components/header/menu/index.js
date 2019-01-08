@@ -3,6 +3,7 @@ import { Menu } from 'antd';
 import Link from 'components/link';
 import { FormattedMessage } from 'react-intl';
 import Router, { withRouter } from 'next/router';
+import { saveAttemptUrl } from 'utils/url';
 
 const Item = Menu.Item;
 
@@ -17,6 +18,7 @@ export default withRouter(class AppMenu extends React.PureComponent {
   render() {
     const { asPath } = this.props.router;
     const selected = asPath.split('?')[0];
+    saveAttemptUrl(asPath);
     return (
       <div className="header__menu-wrap">
         <span className="header__logo">
