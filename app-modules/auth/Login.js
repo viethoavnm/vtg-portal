@@ -8,18 +8,10 @@ import { injectIntl } from 'react-intl';
 import { requestLogin } from 'utils/redux';
 import { FB_APP_ID, G_APP_ID, BASE_URL } from 'consts';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
-import './Login.scss';
 
 const FormItem = Form.Item
 
 class NormalLoginForm extends React.Component {
-  componentDidMount() {
-    if (window && this.props.isAuth)
-      if (!!window.history.length)
-        Router.back()
-      else
-        Router.push('/')
-  }
   state = { loading: false }
 
   handleSubmit = (e) => {

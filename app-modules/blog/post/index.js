@@ -18,7 +18,6 @@ import {
   RESOURCES_PATH,
   RESOURCES_THUMB_PATH
 } from 'consts'
-import './post.scss'
 import { injectIntl } from 'react-intl';
 
 class Post extends React.PureComponent {
@@ -110,7 +109,7 @@ class Post extends React.PureComponent {
                   <div className="blog__title"><span>{this.t('Relative post')}</span></div>
                   <PostList list={this.state.relative} />
                 </div>
-                <div>
+                <div className="sticky-ads">
                   <div className="blog__title"><span>{this.t('Connect')}</span></div>
                   <Fanpage />
                   <Link className="blog__ads" href="/quang-cao-left"><img src="/static/images/co-ip.jpg"></img></Link>

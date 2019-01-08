@@ -124,5 +124,9 @@
   "agreement": "điều khoản",
   "Recovery": "Khôi phục",
   "Recovery successfully!": "Khôi phục thành công!",
-  "Let's check you mailbox to access your account.": "Hãy kiểm tra hộp thư điện tử của bạn để hoàn thành quá trình khôi phục mật khẩu."
+  "Let's check you mailbox to access your account.": "Hãy kiểm tra hộp thư điện tử của bạn để hoàn thành quá trình khôi phục mật khẩu.",
+  "FAQ": "Những câu hỏi thường gặp",
+  "Payment method": "Phương thức thanh toán",
+  "Reseller policy": "Chính sách bán hàng",
+  "Contact %s": "Liên hệ {value}"
 }

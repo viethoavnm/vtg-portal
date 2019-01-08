@@ -2,7 +2,6 @@ import React from 'react'
 import Slider from '../slider'
 import ImageLoader from '../image-loader'
 import { RESOURCES_PATH } from 'consts'
-import './banner.scss'
 
 const Banner = ({ pageInfo }) => (
   <div className="banner animated bounceInLeft">

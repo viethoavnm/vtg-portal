@@ -1,12 +1,11 @@
-import React from 'react'
-import Icon from 'components/icon-text'
-import Link from 'components/link'
-import ImageLoader from 'components/image-loader'
-import { Input } from 'antd'
-import { RESOURCES_PATH } from 'consts'
+import React from 'react';
+import Link from 'next/link';
+import { Input } from 'antd';
+import { connect } from 'react-redux';
+import { RESOURCES_PATH } from 'consts';
 import { injectIntl } from 'react-intl';
-import { connect } from 'react-redux'
-import './footer.scss'
+import Icon from 'components/icon-text';
+import ImageLoader from 'components/image-loader';
 
 const Footer = ({ info = {}, intl: { formatMessage } }) => (
   <footer className="footer">

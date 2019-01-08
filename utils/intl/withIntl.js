@@ -1,11 +1,15 @@
-import hoistNonReactStatics from 'hoist-non-react-statics'
-import { injectIntl } from 'react-intl'
+import React from 'react';
+import { injectIntl } from 'react-intl';
 
-export const hoistStatics = (higherOrderComponent) => (BaseComponent) => {
-  const NewComponent = higherOrderComponent(BaseComponent)
-  hoistNonReactStatics(NewComponent, BaseComponent)
-
-  return NewComponent
+export default function inject(Component) {
+  class WrapperIntl extends React.Component {
+    t = (id, values) => (this.props.intl.formatMessage({ id }, values))
+    render = () => (<Component {...this.props} t={this.t} />)
+  }
+  WrapperIntl.displayName = `Intl(${getDisplayName(Component)})`;
+  return injectIntl(WrapperIntl);
 }
 
-export default hoistStatics(injectIntl)
+function getDisplayName(WrappedComponent) {
+  return WrappedComponent.displayName || WrappedComponent.name || 'Component';
+}

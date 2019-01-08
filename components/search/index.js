@@ -2,7 +2,6 @@ import React from 'react'
 import moment from 'moment'
 import Search from './search'
 import { injectIntl } from 'react-intl'
-import './search.scss'
 
 const defaultState = {
   searchText: '',

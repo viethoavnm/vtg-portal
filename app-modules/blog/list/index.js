@@ -13,7 +13,6 @@ import Head from 'next/head'
 import Fanpage from 'components/facebook/page'
 import { injectIntl } from 'react-intl'
 import { RESOURCES_THUMB_PATH } from 'consts'
-import './Blogs.scss'
 
 class Blogs extends React.PureComponent {
   constructor(props) {
@@ -164,7 +163,7 @@ class Blogs extends React.PureComponent {
               <div className="blog__title"><span>{this.t('Most reading posts')}</span></div>
               <PostList list={topView} />
             </div>
-            <div style={{ marginTop: 15 }}>
+            <div className="sticky-ads">
               <div className="blog__title"><span>{this.t('Connect')}</span></div>
               <Fanpage />
               <a className="blog__ads" href={adsS.url} target="_blank"><img src={adsS.src}></img></a>

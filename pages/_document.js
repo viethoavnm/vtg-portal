@@ -22,6 +22,7 @@ export default class Document extends NextDocument {
           <link rel="icon" type="image/png" href="/static/images/logo.png" />
           <link href="https://fonts.googleapis.com/css?family=Charmonman" rel="stylesheet" />
           <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&ampsubset=vietnamese" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:700&amp;subset=vietnamese" rel="stylesheet" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         </Head>
         <body>

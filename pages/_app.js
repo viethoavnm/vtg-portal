@@ -9,15 +9,10 @@ import NextApp, { Container } from 'next/app';
 import viVN from 'antd/lib/locale-provider/vi_VN';
 import { IntlProvider, addLocaleData } from 'react-intl';
 import { getUserFromServerCookie, getUserFromLocalCookie } from 'utils/auth';
-import {
-  initStore,
-  setUserInfo,
-  requestLogout,
-  setClock,
-  setInfo
-} from 'utils/redux';
+import { initStore, setUserInfo, requestLogout, setClock, setInfo } from 'utils/redux';
 import 'moment/locale/vi';
 import 'antd/dist/antd.less';
+import 'app-modules/app.less';
 
 moment.locale('vi');
 
@@ -69,7 +64,7 @@ class App extends NextApp {
 
 App.getInitialProps = async ({ Component, ctx }) => {
   const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {}
-  const { locale, messages } = ctx.req || window.__NEXT_DATA__.props;
+  const { locale, messages } = ctx.req || window.__NEXT_DATA__.props.initialProps;
   try {
     const { store, isServer } = ctx;
     let loggedUser;

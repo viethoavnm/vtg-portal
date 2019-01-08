@@ -7,7 +7,6 @@ import Search from 'components/search';
 import Banner from 'components/banner';
 import { Icon, Breadcrumb } from 'antd';
 import { connect } from 'react-redux';
-import './Hotel.scss';
 
 class Hotel extends React.Component {
   state = { content: [], page: 0, size: 10 }

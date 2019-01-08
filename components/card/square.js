@@ -3,7 +3,6 @@ import { Card, Rate, Icon } from 'antd'
 import ImageLoader from '../image-loader'
 import Satisfaction from '../satisfaction'
 import { RESOURCES_PATH } from 'consts'
-import './square.scss'
 import { FormattedMessage } from 'react-intl';
 
 const Square = ({ item, onClick = () => { } }) => {

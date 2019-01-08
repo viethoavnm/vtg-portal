@@ -1,8 +1,9 @@
-import React from 'react'
+import React from 'react';
+import Router from 'next/router';
 
 export default class Link extends React.PureComponent {
   goto = () => {
-    console.log("#goto:", this.props.href)
+    Router.push(this.props.href);
   }
   render() {
     const { className, href, style, title, children } = this.props

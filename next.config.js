@@ -2,13 +2,12 @@ const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
-const withSass = require('@zeit/next-sass');
 const withLess = require('@zeit/next-less');
 const withBundleAnalyzer = require('@zeit/next-bundle-analyzer');
 const lessToJS = require('less-vars-to-js');
 
 if (typeof require !== 'undefined') {
-  require.extensions['.less'] = (file) => { };
+  require.extensions['.less'] = () => { };
 }
 
 const themeVariables = lessToJS(
@@ -18,7 +17,7 @@ const themeVariables = lessToJS(
   )
 )
 
-module.exports = withBundleAnalyzer(withSass(withLess({
+module.exports = withBundleAnalyzer(withLess({
   lessLoaderOptions: { javascriptEnabled: true, modifyVars: themeVariables },
   analyzeServer: ['server', 'both'].includes(process.env.BUNDLE_ANALYZE),
   analyzeBrowser: ['browser', 'both'].includes(process.env.BUNDLE_ANALYZE),
@@ -51,4 +50,4 @@ module.exports = withBundleAnalyzer(withSass(withLess({
     }
     return config
   }
-})))
+}))

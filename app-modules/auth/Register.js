@@ -6,7 +6,6 @@ import { BASE_URL } from 'consts';
 import { connect } from 'react-redux';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import { Form, Input, Checkbox, Button, Modal, Icon } from 'antd';
-import './Login.scss';
 
 class RegistrationForm extends React.Component {
   state = { confirmDirty: false, loading: false, agree: false };
@@ -55,14 +54,6 @@ class RegistrationForm extends React.Component {
 
   onCheckboxChange = (e) => {
     this.setState({ agree: e.target.checked })
-  }
-
-  componentDidMount() {
-    if (window && this.props.isAuth)
-      if (!!window.history.length)
-        Router.back()
-      else
-        Router.push('/')
   }
 
   emailOption = {
@@ -176,4 +167,4 @@ const tailFormItemLayout = {
     },
   },
 };
-export default injectIntl(connect((state) => ({ isAuth: !!state.user }))(WrappedRegistrationForm))
+export default injectIntl(connect((state) => ({ isAuth: state.loggedIn }))(WrappedRegistrationForm))

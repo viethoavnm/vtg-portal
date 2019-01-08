@@ -2,7 +2,6 @@ import React from 'react'
 import request from 'api'
 import Head from 'next/head'
 import { Skeleton } from 'antd'
-import './Docs.scss'
 
 class Docs extends React.Component {
   state = { content: '', loading: false }

@@ -6,7 +6,6 @@ import { BASE_URL } from 'consts';
 import { connect } from 'react-redux';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import { Form, Input, Button, Modal, Icon } from 'antd';
-import './Login.scss';
 
 class RegistrationForm extends React.Component {
   state = { confirmDirty: false, loading: false, agree: false };

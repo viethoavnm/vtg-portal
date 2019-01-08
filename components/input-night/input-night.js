@@ -1,9 +1,8 @@
-import React from 'react'
-import moize from 'moize'
-import moment from 'moment'
-import { Button, Dropdown, Icon, Menu } from 'antd'
-import './input-night.scss'
+import React from 'react';
+import moize from 'moize';
+import moment from 'moment';
 import { FormattedMessage } from 'react-intl';
+import { Button, Dropdown, Icon, Menu } from 'antd';
 
 const MAX_NIGHT = 30
 

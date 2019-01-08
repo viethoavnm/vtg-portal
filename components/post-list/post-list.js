@@ -6,7 +6,6 @@ import slugify from 'utils/url'
 import Link from 'components/link'
 import moment from 'moment'
 import { RESOURCES_THUMB_PATH } from 'consts'
-import './post-list.scss'
 
 class PostList extends React.PureComponent {
   render() {

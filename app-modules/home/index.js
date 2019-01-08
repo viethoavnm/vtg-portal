@@ -9,7 +9,6 @@ import Places from './HomePlaces'
 import request from 'api'
 import { connect } from 'react-redux'
 import { FormattedMessage } from 'react-intl';
-import './Home.scss'
 
 class Home extends React.PureComponent {
   state = { places: [], sales: [], suggestions: [] }

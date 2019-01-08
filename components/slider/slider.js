@@ -1,7 +1,6 @@
 import React from 'react'
 import { Skeleton } from 'antd'
 import Slider from 'react-slick/lib/slider'
-import './slider.scss'
 
 export default class Responsive extends React.PureComponent {
   render() {

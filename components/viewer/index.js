@@ -1,5 +1,4 @@
 import React from 'react'
-import './froala.scss'
 /* eslint-disable */
 
 const Viewer = ({ content }) => (

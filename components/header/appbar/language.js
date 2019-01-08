@@ -1,5 +1,6 @@
-import React from 'react'
-import { Button, Icon, Popover } from 'antd'
+import React from 'react';
+import { Button, Icon, Popover } from 'antd';
+import { FormattedMessage } from 'react-intl';
 
 export default class LangNCurrency extends React.PureComponent {
   state = { visible: false }
@@ -22,14 +23,14 @@ export default class LangNCurrency extends React.PureComponent {
         <div className="languages">
           <ul className="language">
             <span className="languages__title">
-              {this.props.t('Language')}
+              <FormattedMessage id="Language" />
             </span>
             <li><span className="language__flag flag vn" />Tiếng Việt</li>
             <li><span className="language__flag flag sg" />Tiếng Anh</li>
           </ul>
           <ul className="currency">
             <span className="languages__title">
-              {this.props.t('Currency')}
+              <FormattedMessage id="Currency" />
             </span>
             <li>
               <span className="currency__token">VND</span>
@@ -41,7 +42,7 @@ export default class LangNCurrency extends React.PureComponent {
             </li>
             <li className="currency__btn">
               <Button type="primary" onClick={this.hide}>
-                {this.props.t('Done')}
+                <FormattedMessage id="Done" />
               </Button>
             </li>
           </ul>
@@ -49,11 +50,11 @@ export default class LangNCurrency extends React.PureComponent {
       }
       trigger="click"
       placement="bottomRight"
-      title={this.props.t('Change language and currency')}>
+      title={<FormattedMessage id="Change language and currency" />}>
       <div className="header__item">
         <span className="flag vn" />
-        <span style={{ marginLeft: 4 }}>VND</span>
-        <Icon type="caret-down" style={{ marginLeft: 4 }} />
+        <span>VND</span>
+        <Icon type="caret-down" />
       </div>
     </Popover >
   )

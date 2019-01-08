@@ -3,38 +3,32 @@
   transition: all 0.25s ease-in-out;
   overflow: hidden;
   width: 100%;
-
   &__title {
     display: block;
     font-weight: 500;
     font-size: 1.2em;
     line-height: 1.25;
     height: 2.5em;
-
     .ant-rate {
       display: inline-flex;
       align-items: center;
       font-size: 0.5em;
-      background: rgba($color: yellow, $alpha: 0.15);
+      background: rgba(255, 255, 0, .15);
       border-radius: 4px;
       padding: 0 4px;
-
       .ant-rate-star {
         margin-right: 2px;
         padding-bottom: 2px;
       }
     }
   }
-
   &__address {
     display: block;
     padding: 8px 0;
-
     .anticon {
       margin-right: 4px;
     }
   }
-
   &__comment {
     text-align: left;
     letter-spacing: 0.1px;
@@ -43,7 +37,6 @@
     font-style: normal;
     font-stretch: normal;
   }
-
   &__price {
     display: flex;
     flex-direction: column;
@@ -51,11 +44,9 @@
     margin-bottom: 8px;
     padding-bottom: 8px;
     border-bottom: 1px solid #ddd;
-
     span.strike {
       text-decoration: line-through;
     }
-
     span.price {
       color: red;
       font-weight: 700;
@@ -63,7 +54,6 @@
       line-height: 1;
     }
   }
-
   &__location {
     position: absolute;
     height: 36px;
@@ -74,12 +64,10 @@
     color: #fff;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   }
-
   &__discount {
     position: absolute;
     top: -220px;
     right: 0px;
-
     span {
       display: flex;
       justify-content: center;
@@ -87,9 +75,8 @@
       position: relative;
       width: 38px;
       height: 32px;
-      background: rgba($color: #f70206, $alpha: 0.99);
+      background: rgba(247, 2, 6, 0.99);
       color: #fff;
-
       &::after {
         content: '';
         position: absolute;
@@ -99,26 +86,22 @@
         bottom: -11px;
         border-style: solid;
         border-width: 0 20px 12px;
-        border-color: transparent rgba($color: #f70206, $alpha: 0.99);
+        border-color: transparent rgba(247, 2, 6, 0.99);
       }
     }
   }
-
   &:hover {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-
     img {
       transform: scale(1.1);
     }
   }
-
   .ant-card-cover {
     position: relative;
     text-align: center;
     height: 220px;
     overflow: hidden;
-
     img {
       overflow: hidden;
       max-width: 100%;
@@ -127,7 +110,6 @@
       transition: transform 0.35s ease-out;
     }
   }
-
   .ant-card-body {
     position: relative;
     padding: 8px 16px 16px;

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button } from 'antd';
 import { FormattedMessage } from 'react-intl';
-import './loadmore.scss';
 
 const LoadMore = ({ onClick, loadMore, loading }) => {
   if (loadMore)

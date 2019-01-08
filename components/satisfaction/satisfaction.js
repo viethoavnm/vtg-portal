@@ -1,6 +1,5 @@
-import React from 'react'
-import { Icon } from 'antd'
-import './satisfaction.scss'
+import React from 'react';
+import { Icon } from 'antd';
 import { FormattedMessage } from 'react-intl';
 
 const Satisfaction = ({ rate = 10 }) => {

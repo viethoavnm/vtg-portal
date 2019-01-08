@@ -38,7 +38,7 @@ app.prepare()
     }
 
     server.get('*', (req, res) => {
-      const locale = 'en-US'
+      const locale = 'en-US';
       req.locale = locale
       req.localeDataScript = getLocaleDataScript(locale)
       req.messages = getMessages(locale)
