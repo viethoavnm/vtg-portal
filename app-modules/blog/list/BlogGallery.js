@@ -1,11 +1,11 @@
-import React from 'react'
-import moment from 'moment'
-import { Skeleton } from 'antd'
-import IconText from 'components/icon-text'
-import ImageLoader from 'components/image-loader'
-import Link from 'components/link'
-import slugify from 'utils/url'
-import { RESOURCES_THUMB_PATH } from 'consts'
+import React from 'react';
+import moment from 'moment';
+import slugify from 'utils/url';
+import { Skeleton } from 'antd';
+import Link from 'components/link';
+import { FormattedMessage } from 'react-intl';
+import { RESOURCES_THUMB_PATH } from 'consts';
+import ImageLoader from 'components/image-loader';
 
 const BlogGallery = ({ list = [] }) => {
   const dataSource = list.map((item) => (
@@ -17,10 +17,11 @@ const BlogGallery = ({ list = [] }) => {
             {item.province && <span className="item__label">{item.province}</span>}
           </div>
           <div className="item__footer">
-            <h4 className="item__title" title={item.title}>{item.title}</h4>
+            <h4 className="item__title webkit-text" title={item.title}>{item.title}</h4>
             <div className="item__info info">
+              <span className="info__author">{item.author ? item.author : 'Unknown'}</span>
               <span className="info__time">{moment(item.modifiedDate).format('DD/MM/YYYY')}</span>
-              <span className="info__count"> - {item.viewCount} (lượt xem)</span>
+              <span className="info__count"><FormattedMessage id="%d views" values={{ value: item.viewCount }} /></span>
             </div>
           </div>
         </Link>

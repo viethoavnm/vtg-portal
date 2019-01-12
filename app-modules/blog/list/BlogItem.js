@@ -1,11 +1,11 @@
 import React from 'react'
 import moment from 'moment'
-import IconText from 'components/icon-text'
 import ImageLoader from 'components/image-loader'
 import Link from 'components/link'
 import slugify from 'utils/url'
 import { strip } from 'utils/html'
 import { RESOURCES_THUMB_PATH } from 'consts'
+import { FormattedMessage } from 'react-intl';
 
 const BlogItem = ({ item }) => {
   const url = `/blog/post?postId=${item.id}&thread=${slugify(item.title)}.html`
@@ -25,9 +25,9 @@ const BlogItem = ({ item }) => {
       <div className="blog-item__content content">
         <Link className="content__title webkit-text" href={url} title={item.title}>{item.title}</Link>
         <ul className="content__info info">
-          <li className="author"><IconText type="user" text={item.author ? item.author : '(Anonymous)'} /></li>
-          <li><IconText type="clock-circle" text={moment(item.modifiedDate).format('DD/MM/YYYY')} /></li>
-          <li><IconText type="eye" text={item.viewCount} /></li>
+          <li className="author">{item.author ? item.author : 'Unknown'}</li>
+          <li>{moment(item.modifiedDate).format('DD/MM/YYYY')}</li>
+          <li><FormattedMessage id="%d views" values={{ value: item.viewCount }} /></li>
         </ul>
         <div className="content__description webkit-text">
           {strip(item.introduction)}
