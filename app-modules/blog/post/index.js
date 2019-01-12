@@ -18,17 +18,21 @@ import {
   RESOURCES_PATH,
   RESOURCES_THUMB_PATH
 } from 'consts'
-import { injectIntl } from 'react-intl';
+import { injectIntl, FormattedMessage } from 'react-intl';
 
 class Post extends React.PureComponent {
   static defaultProps = { post: {} }
 
-  state = { relative: [] }
+  state = { relative: [], copyright: '' }
 
   componentDidMount() {
     const { categoryId, provinceId } = this.props.post
     request.getRelativeBlog({ categoryId, provinceId })
       .then(({ content: relative }) => { this.setState({ relative }) })
+    request.getSetting('BlogCopyright')
+      .then((copyright) => {
+        this.setState({ copyright });
+      });
   }
 
   t = (id) => (this.props.intl.formatMessage({ id }))
@@ -93,13 +97,20 @@ class Post extends React.PureComponent {
                 </article>
                 <div className="spacing" />
                 <Viewer content={post.content} />
-                <Divider />
-                <div className="content__footer" style={{ marginTop: 16 }}>
-                  <p style={{ fontWeight: 'bold', fontSize: 11 }}>Bản quyền thộc về spetrip.com</p>
-                  <h4 className="title">{this.t('Rating post')}</h4>
-                  <div style={{ marginTop: 8 }}><Rate /></div>
+                <div className="content__footer">
+                  <div className="blog__copyright" style={{ marginTop: 8 }}>
+                    <Viewer content={this.state.copyright} />
+                  </div>
+                  <h4 className="title"><FormattedMessage id='Rating post' style={{ marginTop: 8 }} /></h4>
+                  <div className="rating-box" style={{ marginTop: 8 }}>
+                    <Rate defaultValue={post.statisticsRatingRankAvg} />
+                    <div className="rating__point" style={{ marginTop: 8 }}>
+                      <FormattedMessage id="%d rating." values={{ value: post.statisticsRatingRankAvg }} />
+                    </div>
+                  </div>
                   <div style={{ marginTop: 8 }}><ShareButton url={APP_URL + post.url} /></div>
                 </div>
+                <div className="fb-comments" data-href={APP_URL + post.url} data-numposts="3"></div>
               </div>
               <div className="blog__right">
                 <div>
@@ -113,7 +124,6 @@ class Post extends React.PureComponent {
                 </div>
               </div>
             </div>
-            <div className="fb-comments" data-href={APP_URL + post.url} data-numposts="5"></div>
           </div>
         </div>
       </React.Fragment >

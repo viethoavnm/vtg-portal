@@ -129,5 +129,6 @@
   "Payment method": "Phương thức thanh toán",
   "Reseller policy": "Chính sách bán hàng",
   "Contact %s": "Liên hệ {value}",
-  "%d views": "{value} lượt xem"
+  "%d views": "{value} lượt xem",
+  "%d rating.": "{value} lượt đánh giá."
 }
