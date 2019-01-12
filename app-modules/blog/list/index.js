@@ -106,7 +106,7 @@ class Blogs extends React.PureComponent {
       adsS.src = RESOURCES_THUMB_PATH + province.adsList[1].name || adsS.src
     }
     return (
-      <div className="container">
+      <div className="container no-padding">
         <Head><title>{text}</title></Head>
         {!isSearch && <Gallery list={content.slice(0, 5)} />}
         <div className="blog__breadcrumb">
