@@ -26,7 +26,7 @@ const BlogItem = ({ item }) => {
         <Link className="content__title webkit-text" href={url} title={item.title}>{item.title}</Link>
         <ul className="content__info info">
           <li className="author"><IconText type="user" text={item.author ? item.author : '(Anonymous)'} /></li>
-          <li><IconText type="clock-circle" text={moment(item.createdDate).format('ll')} /></li>
+          <li><IconText type="clock-circle" text={moment(item.modifiedDate).format('DD/MM/YYYY')} /></li>
           <li><IconText type="eye" text={item.viewCount} /></li>
         </ul>
         <div className="content__description webkit-text">

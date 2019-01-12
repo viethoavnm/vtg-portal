@@ -88,14 +88,11 @@ class Post extends React.PureComponent {
             </div>
             <div className="blog">
               <div className="blog__left">
-                <div>
-                  <h4> * Bài viết</h4>
+                <article className="blog__intro">
                   <Viewer content={post.introduction} />
-                  <Divider />
-                </div>
-                <article style={{ background: '#fff', padding: '15px' }}>
-                  <Viewer content={post.content} />
                 </article>
+                <div className="spacing" />
+                <Viewer content={post.content} />
                 <Divider />
                 <div className="content__footer" style={{ marginTop: 16 }}>
                   <p style={{ fontWeight: 'bold', fontSize: 11 }}>Bản quyền thộc về spetrip.com</p>
@@ -112,7 +109,7 @@ class Post extends React.PureComponent {
                 <div className="sticky-ads">
                   <div className="blog__title"><span>{this.t('Connect')}</span></div>
                   <Fanpage />
-                  <Link className="blog__ads" href="/quang-cao-left"><img src="/static/images/co-ip.jpg"></img></Link>
+                  <a className="blog__ads" href="/quang-cao-left" target="_blank"><img src="/static/images/co-ip.jpg"></img></a>
                 </div>
               </div>
             </div>

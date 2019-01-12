@@ -107,12 +107,8 @@ class Blogs extends React.PureComponent {
     }
     return (
       <div className="container">
-        <Head>
-          <title>{text}</title>
-        </Head>
-        {!isSearch && <div style={{ background: "#fbfbfb", padding: '15px' }}>
-          <Gallery list={content.slice(0, 5)} />
-        </div>}
+        <Head><title>{text}</title></Head>
+        {!isSearch && <Gallery list={content.slice(0, 5)} />}
         <div className="blog__breadcrumb">
           <Breadcrumb>
             <Breadcrumb.Item href='/'><IconText type="home" text={this.t('Home')} /></Breadcrumb.Item>

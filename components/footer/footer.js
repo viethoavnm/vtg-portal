@@ -28,11 +28,11 @@ const Footer = ({ info = {}, intl: { formatMessage } }) => (
             </div>
             <div className="col-sm-5 col-md-2">
               <p className="footer__category">{formatMessage({ id: 'Follow us' })}</p>
-              <p><a href={info.fbLink}><Icon type="facebook" text="Facebook" theme="filled" /></a></p>
-              <p><a href={info.insLink}><Icon type="instagram" text="Instagram" theme="filled" /></a></p>
-              <p><a href={info.ytbLink}><Icon type="youtube" text="Youtube" theme="filled" /></a></p>
-              <p><a href={info.twLink}><Icon type="twitter" text="Twitter" /></a></p>
-              <p><a href={info.gpLink}><Icon type="google" text="Google +" /></a></p>
+              <p><a href={info.fbLink} target="_blank"><Icon type="facebook" text="Facebook" theme="filled" /></a></p>
+              <p><a href={info.insLink} target="_blank"><Icon type="instagram" text="Instagram" theme="filled" /></a></p>
+              <p><a href={info.ytbLink} target="_blank"><Icon type="youtube" text="Youtube" theme="filled" /></a></p>
+              <p><a href={info.twLink} target="_blank"><Icon type="twitter" text="Twitter" /></a></p>
+              <p><a href={info.gpLink} target="_blank"><Icon type="google" text="Google +" /></a></p>
             </div>
             <div className="col-sm-7 col-md-3">
               <p className="footer__category">{formatMessage({ id: 'Download app now' })}</p>
