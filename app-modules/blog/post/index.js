@@ -23,12 +23,18 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 class Post extends React.PureComponent {
   static defaultProps = { post: {} }
 
-  state = { relative: [], copyright: '' }
+  state = { relative: [], copyright: '', province: {} }
 
   componentDidMount() {
     const { categoryId, provinceId } = this.props.post
     request.getRelativeBlog({ categoryId, provinceId })
-      .then(({ content: relative }) => { this.setState({ relative }) })
+      .then(({ content: relative }) => {
+        this.setState({ relative })
+      });
+    request.getProvince(provinceId)
+      .then((province) => {
+        this.setState({ province })
+      });
     request.getSetting('BlogCopyright')
       .then((copyright) => {
         this.setState({ copyright });
@@ -38,7 +44,13 @@ class Post extends React.PureComponent {
   t = (id) => (this.props.intl.formatMessage({ id }))
 
   render() {
-    const { post } = this.props
+    const { post } = this.props;
+    const { province } = this.state;
+    const ads = { url: '#', src: '/static/images/co-ip.jpg' }
+    if (province && province.adsList) {
+      ads.url = province.adsList[0].adsUrl
+      ads.src = RESOURCES_THUMB_PATH + province.adsList[0].name || ads.src
+    }
     return (
       <React.Fragment>
         <Head>
@@ -120,7 +132,7 @@ class Post extends React.PureComponent {
                 <div className="sticky-ads">
                   <div className="blog__title"><span>{this.t('Connect')}</span></div>
                   <Fanpage />
-                  <a className="blog__ads" href="/quang-cao-left" target="_blank"><img src="/static/images/co-ip.jpg"></img></a>
+                  <a className="blog__ads" href={ads.url} target="_blank"><img src={ads.src}></img></a>
                 </div>
               </div>
             </div>

@@ -29,7 +29,8 @@ class Blogs extends React.PureComponent {
         page,
         provinceId: query.provinceId,
         categoryId: query.categoryId,
-        key: query.text
+        key: query.text,
+        sort: 'createdDate,desc'
       })
         .then((data) => {
           this.setState({
@@ -42,7 +43,7 @@ class Blogs extends React.PureComponent {
           this.setState({ loading: false })
         })
     } else
-      request.getBlogList({ page })
+      request.getBlogList({ page, sort: 'createdDate,desc' })
         .then((data) => {
           this.setState({
             ...data,
@@ -132,7 +133,7 @@ class Blogs extends React.PureComponent {
               loading={loading}
               loadMore={!last}
               onLoadMore={this.onLoadMore}
-              list={content}
+              list={isSearch ? content : content.slice(5)}
             />
           </div>
           <div className="blog__right">
