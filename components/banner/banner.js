@@ -20,10 +20,10 @@ const Banner = ({ pageInfo }) => (
         />
         <a href="/" className="banner__slogan-wrapper">
           <h4 className="banner__app-name">
-            APP_NAME
+            {/* APP_NAME */}
           </h4>
           <p className="banner__slogan">
-            APP_SLOGAN
+            {/* APP_SLOGAN */}
           </p>
         </a>
       </div>
