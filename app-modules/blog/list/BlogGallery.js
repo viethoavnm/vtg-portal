@@ -3,8 +3,8 @@ import moment from 'moment';
 import slugify from 'utils/url';
 import { Skeleton } from 'antd';
 import Link from 'components/link';
+import { RESOURCES_PATH } from 'consts';
 import { FormattedMessage } from 'react-intl';
-import { RESOURCES_THUMB_PATH } from 'consts';
 import ImageLoader from 'components/image-loader';
 
 const BlogGallery = ({ list = [] }) => {
@@ -13,7 +13,7 @@ const BlogGallery = ({ list = [] }) => {
       {item ?
         <Link className="gallery__item item" href={`/blog/post?postId=${item.id}&thread=${slugify(item.title)}.html`}>
           <div className="item__thumb">
-            <ImageLoader src={RESOURCES_THUMB_PATH + item.bannerContentName} />
+            <ImageLoader src={RESOURCES_PATH + item.bannerContentName} />
             {item.province && <span className="item__label">{item.province}</span>}
           </div>
           <div className="item__footer">

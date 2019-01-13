@@ -1,18 +1,18 @@
-import React from 'react'
-import moize from 'moize'
-import Router from 'next/router'
-import { Input, Breadcrumb } from 'antd'
-import BlogList from './BlogList'
-import Gallery from './BlogGallery'
-import Category from './BlogCategory'
-import Province from './BlogProvince'
-import IconText from 'components/icon-text'
-import PostList from 'components/post-list'
-import request from 'api'
-import Head from 'next/head'
-import Fanpage from 'components/facebook/page'
-import { injectIntl } from 'react-intl'
-import { RESOURCES_THUMB_PATH } from 'consts'
+import React from 'react';
+import moize from 'moize';
+import request from 'api';
+import Head from 'next/head';
+import Router from 'next/router';
+import BlogList from './BlogList';
+import Gallery from './BlogGallery';
+import Category from './BlogCategory';
+import Province from './BlogProvince';
+import { Input, Breadcrumb } from 'antd';
+import IconText from 'components/icon-text';
+import PostList from 'components/post-list';
+import Fanpage from 'components/facebook/page';
+import { injectIntl } from 'react-intl';
+import { RESOURCES_PATH } from 'consts';
 
 class Blogs extends React.PureComponent {
   constructor(props) {
@@ -103,8 +103,8 @@ class Blogs extends React.PureComponent {
     if (province && province.adsList) {
       adsF.url = province.adsList[0].adsUrl
       adsS.url = province.adsList[1].adsUrl
-      adsF.src = RESOURCES_THUMB_PATH + province.adsList[0].name || adsF.src
-      adsS.src = RESOURCES_THUMB_PATH + province.adsList[1].name || adsS.src
+      adsF.src = RESOURCES_PATH + province.adsList[0].name || adsF.src
+      adsS.src = RESOURCES_PATH + province.adsList[1].name || adsS.src
     }
     return (
       <div className="container no-padding">
