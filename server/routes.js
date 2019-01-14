@@ -25,7 +25,7 @@ routes.add('blog/list', '/blogs')
  * HOTEL
  */
 routes.add('hotel', '/hotel')
-routes.add('detail', '/hotel/:id')
+routes.add('hotel/detail', '/hotel/:id')
 routes.add('hotel/topPlaces', 'hotel/top-of-places')
 routes.add('hotel/topSelections', 'hotel/top-of-selections')
 /**

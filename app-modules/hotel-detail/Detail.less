@@ -1,0 +1,267 @@
+.detail {
+  margin-top: 48px;
+
+  >* {
+    margin-bottom: 16px;
+  }
+
+  .box {
+    background: #fff;
+    border-radius: 4px;
+  }
+
+  .title {
+    display: inline-block;
+    font-size: 1.5em;
+    margin: 16px 0 8px 0;
+    color: rgba(0, 0, 0, 0.65);
+    font-weight: 700;
+
+    .ant-rate {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.7em;
+      background: rgba(255,255,0, 0.15);
+      border-radius: 4px;
+      padding: 0 4px;
+
+      .ant-rate-star {
+        margin-right: 2px;
+        padding-bottom: 2px;
+      }
+    }
+  }
+
+  .label {
+    color: rgba(0,0,0, 0.85);
+    font-size: 1.15em;
+  }
+
+  .preview {
+    .sliderA {
+      height: 350px;
+
+      img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .sliderB {
+      height: 150px;
+      margin-top: 8px;
+
+      .slick-slide>div {
+        margin-right: 8px;
+      }
+
+      img {
+        object-fit: cover;
+        height: 100%;
+      }
+    }
+  }
+
+  .hotel-amenities {
+    .amenity-list {
+      display: flex;
+      padding: 8px 0;
+      margin-top: 8px;
+
+      .amenity-item {
+        flex: 1 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .u-icon {
+          font-size: 2em;
+          color: rgba(0, 0, 0, 0.45)
+        }
+      }
+    }
+  }
+
+  .date-time {
+    display: flex;
+
+    .group {
+      margin-right: 16px;
+
+      .g-label {
+        margin-bottom: 4px;
+      }
+    }
+  }
+
+  .table-wrapper {
+
+    .t-head {
+      padding: 16px 4px;
+      background: #fff;
+      border-bottom: 1px solid #ccc;
+      margin-bottom: 16px;
+
+      .rm-pd {
+        padding: 0 4px;
+      }
+    }
+
+    .room-item {
+      border-radius: 4px;
+      height: 180px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(192, 192, 192, .35);
+
+      .room-type {
+        padding: 8px;
+        padding-left: 16px;
+
+        .anticon {
+          margin-right: 4px;
+        }
+
+        >* {
+          margin-bottom: 4px;
+        }
+
+        .type {
+          font-size: 1.25em;
+          font-weight: 700;
+        }
+      }
+
+      .room-policy {
+        ul {
+          padding: 0 18px;
+          margin: 0;
+          font-weight: normal;
+          font-style: italic;
+        }
+      }
+
+      .price,
+      .human-num,
+      .room-amount {
+        padding: 16px 8px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .room-amount {
+        .r-dropdown {
+          width: 80px;
+          margin-top: 8px;
+          padding-right: 8px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+      }
+
+      .price {
+        padding-right: 16px;
+        align-items: flex-end;
+        justify-content: center;
+        position: relative;
+
+        .sale-off {
+          position: absolute;
+          top: 16px;
+          right: 16px;
+          font-weight: 700;
+          font-size: 1.2em;
+          color: red;
+          padding: 4px;
+          border-radius: 4px;
+          background: rgba(255,255,0, .25);
+        }
+
+        .price-per-night {
+          font-weight: normal;
+          color: #1890ff;
+        }
+
+        .strike {
+          font-weight: normal;
+          text-decoration: line-through;
+        }
+
+        .last-price {
+          color: red;
+          font-weight: 700;
+          font-size: 1.5em;
+        }
+      }
+
+      .thumbnail {
+        width: 100%;
+        height: 100%;
+
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: 4px 0 0 4px;
+          object-fit: cover;
+        }
+      }
+    }
+
+    .payment {
+      margin-left: 8px;
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      padding: 16px;
+
+      .selected {
+        font-size: 1.5em;
+      }
+
+      >* {
+        margin-bottom: 8px;
+      }
+    }
+  }
+
+  .hotel-policy,
+  .about-hotel {
+    .box {
+      margin: 0;
+      margin-top: 8px;
+      padding: 16px;
+      line-height: 1.75;
+      font-weight: normal;
+
+      ul {
+        padding: 0;
+        padding-left: 16px;
+        margin: 0;
+      }
+    }
+  }
+
+  .user-rating {
+    .comment {
+      display: flex;
+
+      &__score {
+        font-size: 1.5em;
+        font-weight: bold;
+        margin-right: 16px;
+      }
+
+      &__name {
+        font-weight: bold;
+        margin-right: 16px;
+      }
+
+      &__date {
+        font-weight: bold;
+        color: rgba(0, 0, 0, 0.45);
+      }
+    }
+  }
+}
