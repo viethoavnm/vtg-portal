@@ -1,10 +1,22 @@
-import React from 'react'
-import { Icon, Skeleton } from 'antd'
-import ImageLoader from 'components/image-loader'
-import { RESOURCES_PATH } from 'consts'
+import React from 'react';
+import Router from 'next/router';
+import { Icon, Skeleton } from 'antd';
+import { RESOURCES_PATH } from 'consts';
 import { FormattedMessage } from 'react-intl';
+import ImageLoader from 'components/image-loader';
 
 export default class TopPlaces extends React.PureComponent {
+
+  onClick = (selected) => () => {
+    Router.push({
+      pathname: `/hotel`,
+      query: {
+        objectId: selected.id,
+        objectType: 'PLACE'
+      }
+    })
+  }
+
   render() {
     const { items } = this.props
     return (
@@ -15,7 +27,7 @@ export default class TopPlaces extends React.PureComponent {
             <div className={`places__item item ${i < 2 ? 'places__item--long' : 'places__item--short'}`} key={i.toString()} >
               {
                 item ?
-                  <a className="item__wrapper">
+                  <a className="item__wrapper" onClick={this.onClick(item)}>
                     <div className="item__overlay">
                       <h4 className="item__name">{item.name}</h4>
                       <span className="item__slogan">{item.slogan}</span>

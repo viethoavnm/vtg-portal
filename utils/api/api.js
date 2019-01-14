@@ -60,7 +60,7 @@ const api = (axios) => ({
     return axios.get('api/hotel/get-list-by-star-rank', { params });
   },
   getHotelListToBooking: (params) => {
-    return axios.get('api/hotel/get-all', { params });
+    return axios.get('api/hotel/get-list-to-booking', { params });
   },
   getStatisticsByPlaceId: (params) => {
     return axios.get('api/hotel/get-statistics-by-place-id', { params: { page, size } });
@@ -70,6 +70,9 @@ const api = (axios) => ({
   },
   getTopByViewCount: (params) => {
     return axios.get('api/hotel/get-top-by-view-count', { params: { page, size } });
+  },
+  getPlaceListByNameFTS: (params) => {
+    return axios.get('api/place/get-list-by-name-FTS', { params });
   }
 })
 

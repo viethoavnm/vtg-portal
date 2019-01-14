@@ -20,8 +20,7 @@ const Square = ({ item, onClick = () => { } }) => {
       hoverable
       className="square"
       onClick={onClick}
-      cover={<ImageLoader className="animated fadeIn" alt={name} src={thumb} />}
-    >
+      cover={<ImageLoader className="animated fadeIn" alt={name} src={thumb} />}>
       <div className="square__price">
         <a><FormattedMessage id="Price per night" /></a>
         <span className="strike">{price}</span>

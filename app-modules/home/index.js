@@ -1,14 +1,16 @@
-import React from 'react'
-import { Icon } from 'antd'
-import Card from 'components/card'
-import Search from 'components/search'
-import Slider from 'components/slider'
-import Banner from 'components/banner'
-import Advertisement from './HomeAds'
-import Places from './HomePlaces'
-import request from 'api'
-import { connect } from 'react-redux'
+import React from 'react';
+import { Icon } from 'antd';
+import Card from 'components/card';
+import Search from 'components/search';
+import Slider from 'components/slider';
+import Banner from 'components/banner';
+import Advertisement from './HomeAds';
+import Places from './HomePlaces';
+import request from 'api';
+import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
+import Router from 'next/router';
+import Link from 'next/link';
 
 class Home extends React.PureComponent {
   state = { places: [], sales: [], suggestions: [] }
@@ -19,8 +21,11 @@ class Home extends React.PureComponent {
     request.getTopViewCount().then(({ content: suggestions }) => { this.setState({ suggestions }) })
   }
 
-  onSearch = (values) => {
-    window.location = '/hotel?'
+  onItemSelect = ({ id }) => {
+    Router.push({
+      pathname: `/hotel/${id}`,
+      query: { objectId: id, objectType: 'HOTEL' }
+    })
   }
 
   render = () => {
@@ -35,14 +40,14 @@ class Home extends React.PureComponent {
           <Advertisement />
           <div className="home__title">
             <FormattedMessage id="Top of places" />
-            <a href="#/"><FormattedMessage id="View more" /><Icon type="right" /></a>
+            <Link href="hotel/top-of-places"><a><FormattedMessage id="View more" /><Icon type="right" /></a></Link>
           </div>
-          <Slider inline slides={sales.map((item, index) => (<Card item={item} key={index.toString()} />))} />
+          <Slider inline slides={sales.map((item, index) => (<Card item={item} key={index.toString()} onClick={this.onItemSelect.bind(this, item)} />))} />
           <div className="home__title">
             <FormattedMessage id="Top of selections" />
-            <a href="#/"><FormattedMessage id="View more" /><Icon type="right" /></a>
+            <Link href="hotel/top-of-selections"><a><FormattedMessage id="View more" /><Icon type="right" /></a></Link>
           </div>
-          <Slider inline slides={suggestions.map((item, index) => (<Card key={index.toString()} item={item} />))} />
+          <Slider inline slides={suggestions.map((item, index) => (<Card key={index.toString()} item={item} onClick={this.onItemSelect.bind(this, item)} />))} />
           <br />
         </div>
       </div >

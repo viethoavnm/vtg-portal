@@ -7,20 +7,23 @@ import Search from 'components/search';
 import Banner from 'components/banner';
 import { Icon, Breadcrumb } from 'antd';
 import { connect } from 'react-redux';
+import { withRouter } from 'next/router';
 
 class Hotel extends React.Component {
   state = { content: [], page: 0, size: 10 }
 
   fetch() {
-    request.getHotelListToBooking()
+    const { query } = this.props.router;
+    const { page, size } = this.state;
+    query.startDate = new Date().toISOString();
+    query.endDate = new Date().toISOString();
+    query.numberOfRoom = 1;
+    query.numberOfCustomer = 2;
+    request.getHotelListToBooking({ ...query, page, size })
       .then((data) => {
         this.setState({ ...data })
       })
       .catch();
-  }
-
-  onSearch = (params) => {
-
   }
 
   componentDidMount() {
@@ -63,4 +66,4 @@ class Hotel extends React.Component {
   }
 }
 
-export default connect((state) => ({ pageInfo: state.info.HOTEL }))(Hotel);
+export default withRouter(connect((state) => ({ pageInfo: state.info.HOTEL }))(Hotel));
