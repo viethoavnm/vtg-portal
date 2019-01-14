@@ -56,6 +56,10 @@ class Preview extends React.PureComponent {
   }
 }
 
+Preview.defaultProps = {
+  thumbs: []
+}
+
 export default Preview;
 
 const settingsA = {

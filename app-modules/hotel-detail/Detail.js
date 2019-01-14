@@ -10,18 +10,18 @@ import Services from './HotelServices';
 import Amenities from './HotelAmenities';
 import { Icon, Rate } from 'antd';
 
-const Detail = () => (
+const Detail = ({ hotel }) => (
   <div className="detail container">
     <div className="row box">
       <div className="col-12">
         <span className="title">
-          {`hotel.title`}
+          {hotel.name}
           <Rate value={5} disabled />
         </span>
-        <p className="address"><Icon type="environment" /> {`hotel.address`}</p>
+        <p className="address"><Icon type="environment" /> {hotel.address}</p>
       </div>
     </div>
-    <Preview thumbs={[]} />
+    <Preview thumbs={hotel.contentNames} />
     <Amenities />
     <DateTime />
     <Table data={[]} />

@@ -30,6 +30,7 @@ class Blogs extends React.PureComponent {
         provinceId: query.provinceId,
         categoryId: query.categoryId,
         key: query.text,
+        status: 'PUBLISHED',
         sort: 'createdDate,desc'
       })
         .then((data) => {
