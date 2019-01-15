@@ -43,6 +43,17 @@ class Post extends React.PureComponent {
 
   t = (id) => (this.props.intl.formatMessage({ id }))
 
+  onRating = (value) => {
+    const { id, ratingId } = this.props.post;
+    request.rating({
+      "objectId": id,
+      "objectType": "BLOG",
+      "ranks": value,
+      "id": ratingId,
+      "ratingId": ratingId
+    })
+  }
+
   render() {
     const { post } = this.props;
     const { province } = this.state;
@@ -114,7 +125,7 @@ class Post extends React.PureComponent {
                   </div>
                   <h4 className="title"><FormattedMessage id='Rating post' style={{ marginTop: 8 }} /></h4>
                   <div className="rating-box" style={{ marginTop: 8 }}>
-                    <Rate defaultValue={post.statisticsRatingRankAvg} />
+                    <Rate defaultValue={post.statisticsRatingRankAvg} onChange={this.onRating} allowHalf />
                     <div className="rating__point" style={{ marginTop: 8 }}>
                       <FormattedMessage id="%d rating." values={{ value: post.statisticsRatingRankAvg }} />
                     </div>

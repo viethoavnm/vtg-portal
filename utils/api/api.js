@@ -39,6 +39,9 @@ const api = (axios) => ({
   getRelativeBlog: (params) => {
     return axios.get('api/blog/get-by-cate-and-province', { params });
   },
+  rating: (data) => {
+    return axios.put('api/ratingDetail/', data)
+  },
   /**API : HOMEPAGE */
   getTopPlaces: (limit = 5) => {
     return axios.get('api/place/get-all', { params: { limit } });

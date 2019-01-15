@@ -28,14 +28,14 @@ const Banner = ({ pageInfo }) => (
         </a>
       </div>
       <div className="banner__ads">
-        <a href="/">
+        <a href={pageInfo.url1}>
           <div>
-            <ImageLoader src={RESOURCES_PATH + '6fae2b1e-79ae-46e3-8c29-71df8b864f8a.jpg'} />
+            <ImageLoader src={RESOURCES_PATH + pageInfo.ads1} />
           </div>
         </a>
-        <a href="/">
+        <a href={pageInfo.url2}>
           <div>
-            <ImageLoader src={RESOURCES_PATH + '93da99ba-98ec-47c0-a187-3d81048a23ef.jpg'} />
+            <ImageLoader src={RESOURCES_PATH + pageInfo.ads2} />
           </div>
         </a>
       </div>
