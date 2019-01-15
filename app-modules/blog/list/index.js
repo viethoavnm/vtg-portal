@@ -164,7 +164,7 @@ class Blogs extends React.PureComponent {
             <div className="sticky-ads">
               <div className="blog__title"><span>{this.t('Connect')}</span></div>
               <Fanpage />
-              <a className="blog__ads" href={adsS.url} target="_blank"><img src={adsS.src}></img></a>
+              <a className="blog__ads blog__ads--long" href={adsS.url} target="_blank"><img src={adsS.src}></img></a>
             </div>
           </div>
         </div>

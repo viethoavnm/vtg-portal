@@ -52,7 +52,7 @@ export default class LangNCurrency extends React.PureComponent {
       placement="bottomRight"
       title={<FormattedMessage id="Change language and currency" />}>
       <div className="header__item">
-        <span className="flag vn" />
+        <span className="flag vn" style={{ marginRight: 6 }} />
         <span>VND</span>
         <Icon type="caret-down" />
       </div>
