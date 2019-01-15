@@ -1,9 +1,10 @@
 import React from 'react';
 import { Menu } from 'antd';
 import Link from 'components/link';
+import { saveAttemptUrl } from 'utils/url';
 import { FormattedMessage } from 'react-intl';
 import Router, { withRouter } from 'next/router';
-import { saveAttemptUrl } from 'utils/url';
+import showWarning from 'components/warning';
 
 const Item = Menu.Item;
 
@@ -12,7 +13,15 @@ export default withRouter(class AppMenu extends React.PureComponent {
     (<Item key={href}><FormattedMessage id={title} /></Item>))
 
   onMenuSelect = ({ key }) => {
-    Router.push(key);
+    switch (key) {
+      case '/':
+      case '/blogs':
+        Router.push(key);
+        break;
+      default:
+        showWarning();
+        break;
+    }
   }
 
   render() {

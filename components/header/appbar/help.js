@@ -1,7 +1,13 @@
 import React from 'react';
 import Link from 'components/link';
 import { Icon, Popover } from 'antd';
+import showWarning from 'components/warning';
 import { FormattedMessage } from 'react-intl';
+
+const onClick = (e) => {
+  e.preventDefault();
+  showWarning();
+}
 
 const HelpWindow = () =>
   (<Popover
@@ -10,10 +16,10 @@ const HelpWindow = () =>
     title={<FormattedMessage id="Help" />}
     content={
       (<div className="menu-popover">
-        <Link className="menu-popover__item" href="/faq"> <FormattedMessage id="FAQ" /></Link>
-        <Link className="menu-popover__item" href="/payment"><FormattedMessage id="Payment method" /></Link>
-        <Link className="menu-popover__item" href="/policy"><FormattedMessage id="Reseller policy" /></Link>
-        <Link className="menu-popover__item" href="/contact"><FormattedMessage id="Contact %s" values={{ value: 'spetrip.com' }} /></Link>
+        <a className="menu-popover__item" onClick={onClick} href="/faq"><FormattedMessage id="FAQ" /></a>
+        <a className="menu-popover__item" onClick={onClick} href="/payment"><FormattedMessage id="Payment method" /></a>
+        <a className="menu-popover__item" onClick={onClick} href="/policy"><FormattedMessage id="Reseller policy" /></a>
+        <a className="menu-popover__item" onClick={onClick} href="/contact"><FormattedMessage id="Contact %s" values={{ value: 'spetrip.com' }} /></a>
         <span className="menu-popover__item" ><FormattedMessage id="Hotline" />: <Link>19008198</Link></span>
       </div>)}>
     <FormattedMessage id='Help' />

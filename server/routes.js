@@ -26,8 +26,8 @@ routes.add('blog/list', '/blogs')
  */
 routes.add('hotel', '/hotel')
 routes.add('hotel/detail', '/hotel/:id')
-routes.add('hotel/topPlaces', 'hotel/top-of-places')
-routes.add('hotel/topSelections', 'hotel/top-of-selections')
+routes.add('hotel/topPlaces', 'hotels/top-of-places')
+routes.add('hotel/topSelections', 'hotels/top-of-selections')
 /**
  * ROOM
  */

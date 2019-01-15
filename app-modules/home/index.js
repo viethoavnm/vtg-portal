@@ -40,12 +40,12 @@ class Home extends React.PureComponent {
           <Advertisement />
           <div className="home__title">
             <FormattedMessage id="Top of places" />
-            <Link href="hotel/top-of-places"><a><FormattedMessage id="View more" /><Icon type="right" /></a></Link>
+            <Link href="hotels/top-of-places"><a><FormattedMessage id="View more" /><Icon type="right" /></a></Link>
           </div>
           <Slider inline slides={sales.map((item, index) => (<Card item={item} key={index.toString()} onClick={this.onItemSelect.bind(this, item)} />))} />
           <div className="home__title">
             <FormattedMessage id="Top of selections" />
-            <Link href="hotel/top-of-selections"><a><FormattedMessage id="View more" /><Icon type="right" /></a></Link>
+            <Link href="hotels/top-of-selections"><a><FormattedMessage id="View more" /><Icon type="right" /></a></Link>
           </div>
           <Slider inline slides={suggestions.map((item, index) => (<Card key={index.toString()} item={item} onClick={this.onItemSelect.bind(this, item)} />))} />
           <br />
