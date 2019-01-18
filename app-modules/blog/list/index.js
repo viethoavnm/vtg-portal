@@ -6,7 +6,7 @@ import Layout from 'components/layout'
 
 const Blogs = dynamic({ loader: () => import('./Blogs') })
 
-Blogs.getInitialProps = async ({ store, query, isServer }) => {
+Blogs.getInitialProps = async ({ store, query }) => {
   try {
     const { categoryId, provinceId } = query
     const [info, category, province] = await Promise.all([
@@ -14,7 +14,7 @@ Blogs.getInitialProps = async ({ store, query, isServer }) => {
       categoryId ? request.getCategory(categoryId) : Promise.resolve(),
       provinceId ? request.getProvince(provinceId) : Promise.resolve()
     ])
-    if (isServer) store.dispatch(setInfo({ 'BLOG': info }))
+    store.dispatch(setInfo({ 'BLOG': info }))
     return { query, province, category }
   } catch (error) { }
 }

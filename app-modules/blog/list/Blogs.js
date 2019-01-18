@@ -171,5 +171,7 @@ class Blogs extends React.PureComponent {
       </div >)
   }
 }
-
+Blogs.defaultProps = {
+  pageInfo: {}
+}
 export default injectIntl(Blogs)

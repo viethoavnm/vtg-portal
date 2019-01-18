@@ -125,7 +125,7 @@ class Post extends React.PureComponent {
                   <div className="blog__copyright" style={{ marginTop: 8 }}>
                     <Viewer content={this.state.copyright} />
                   </div>
-                  <h4 className="title"><FormattedMessage id='Rating post' style={{ marginTop: 8 }} /></h4>
+                  <h4 className="title" style={{ marginTop: 8 }}><FormattedMessage id='Rating post' /></h4>
                   <div className="rating-box" style={{ marginTop: 8 }}>
                     <Rate defaultValue={post.statisticsRatingRankAvg} onChange={this.onRating} disabled={this.state.rated} />
                     <div className="rating__point" style={{ marginTop: 8 }}>
