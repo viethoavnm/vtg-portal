@@ -51,12 +51,12 @@ const Footer = ({ info = {}, intl: { formatMessage } }) => (
     <div className="footer__box footer__box--light-gray">
       <div className="container">
         <div className="box-link">
-          <Link href="/about"><a>{formatMessage({ id: 'About us' })}</a></Link>
-          <Link href="/policy"><a>{formatMessage({ id: 'Term and conditions' })}</a></Link>
-          <Link href="/activity"><a>{formatMessage({ id: 'Operational regulations' })}</a></Link>
-          <Link href="/support"><a>{formatMessage({ id: 'Support' })}</a></Link>
-          <Link href="/contact"><a>{formatMessage({ id: 'Contact' })}</a></Link>
-          <Link href="/career"><a>{formatMessage({ id: 'Recruitment' })}</a></Link>
+          <a href="/about" target="_blank">{formatMessage({ id: 'About us' })}</a>
+          <a href="/policy" target="_blank">{formatMessage({ id: 'Term and conditions' })}</a>
+          <a href="/activity" target="_blank">{formatMessage({ id: 'Operational regulations' })}</a>
+          <a href="/support" target="_blank">{formatMessage({ id: 'Support' })}</a>
+          <a href="/contact" target="_blank">{formatMessage({ id: 'Contact' })}</a>
+          <a href="/career" target="_blank">{formatMessage({ id: 'Recruitment' })}</a>
         </div>
       </div>
     </div>
