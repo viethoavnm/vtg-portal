@@ -31,7 +31,7 @@ class Hotel extends React.Component {
   }
 
   render() {
-    const { pageInfo } = this.props;
+    const { pageInfo, place } = this.props;
     return (
       <React.Fragment>
         <Banner pageInfo={pageInfo} />
@@ -50,12 +50,12 @@ class Hotel extends React.Component {
                 </Breadcrumb.Item>
                 <Breadcrumb.Item>
                   <Icon type="crown" />
-                  <span>Thành phố Đà nẵng</span>
+                  <span>{place.name}</span>
                 </Breadcrumb.Item>
               </Breadcrumb>
             </div>
             <div className="hotel-title">
-              <span>Khách sạn tại thành phố Đà Nẵng</span>
+              <span>Khách sạn tại {place.name}</span>
             </div>
             <SortBar />
             <HotelList {...this.state} />

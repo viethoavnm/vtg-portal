@@ -1,17 +1,17 @@
-import React from 'react'
-import moment from 'moment'
-import { Breadcrumb, Rate, Divider } from 'antd'
-import Viewer from 'components/viewer'
-import PostList from 'components/post-list'
-import ImageLoader from 'components/image-loader'
-import IconText from 'components/icon-text'
-import request from 'api'
-import Fanpage from 'components/facebook/page'
-import ShareButton from 'components/facebook/share'
-import { strip } from 'utils/html'
-import { addJSONLD } from 'utils/seo'
-import Link from 'components/link'
-import Head from 'next/head'
+import React from 'react';
+import moment from 'moment';
+import { Breadcrumb, Rate } from 'antd';
+import Viewer from 'components/viewer';
+import PostList from 'components/post-list';
+import ImageLoader from 'components/image-loader';
+import IconText from 'components/icon-text';
+import request from 'api';
+import Fanpage from 'components/facebook/page';
+import ShareButton from 'components/facebook/share';
+import { strip } from 'utils/html';
+import { addJSONLD } from 'utils/seo';
+import Link from 'components/link';
+import Head from 'next/head';
 import {
   APP_URL,
   FB_APP_ID,
@@ -23,7 +23,7 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 class Post extends React.PureComponent {
   static defaultProps = { post: {} }
 
-  state = { relative: [], copyright: '', province: {} }
+  state = { relative: [], copyright: '', province: {}, rated: false }
 
   componentDidMount() {
     const { categoryId, provinceId } = this.props.post
@@ -51,6 +51,8 @@ class Post extends React.PureComponent {
       "ranks": value,
       "id": ratingId,
       "ratingId": ratingId
+    }).then(() => {
+      this.setState({ rated: true })
     })
   }
 
@@ -125,9 +127,9 @@ class Post extends React.PureComponent {
                   </div>
                   <h4 className="title"><FormattedMessage id='Rating post' style={{ marginTop: 8 }} /></h4>
                   <div className="rating-box" style={{ marginTop: 8 }}>
-                    <Rate defaultValue={post.statisticsRatingRankAvg} onChange={this.onRating} allowHalf />
+                    <Rate defaultValue={post.statisticsRatingRankAvg} onChange={this.onRating} disabled={this.state.rated} />
                     <div className="rating__point" style={{ marginTop: 8 }}>
-                      <FormattedMessage id="%d rating." values={{ value: post.statisticsRatingRankAvg }} />
+                      <FormattedMessage id="%d rating." values={{ value: this.state.rated ? post.statisticsRatingCount + 1 : post.statisticsRatingCount }} />
                     </div>
                   </div>
                   <div style={{ marginTop: 8 }}><ShareButton url={APP_URL + post.url} /></div>

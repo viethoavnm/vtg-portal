@@ -40,7 +40,7 @@ const api = (axios) => ({
     return axios.get('api/blog/get-by-cate-and-province', { params });
   },
   rating: (data) => {
-    return axios.put('api/ratingDetail/', data)
+    return axios.post('api/ratingDetail/', data)
   },
   /**API : HOMEPAGE */
   getTopPlaces: (limit = 5) => {
@@ -76,6 +76,14 @@ const api = (axios) => ({
   },
   getPlaceListByNameFTS: (params) => {
     return axios.get('api/place/get-list-by-name-FTS', { params });
+  },
+  /**API : PLACE */
+  getPlaceById: (id) => {
+    return axios.get(`api/place/get-by-id/${id}`);
+  },
+  /**API : PLACE */
+  getListRoomToBooking: (params) => {
+    return axios.get('api/hotel-room/get-list-to-booking', params);
   }
 })
 

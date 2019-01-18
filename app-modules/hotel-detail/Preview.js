@@ -1,5 +1,6 @@
 import React from 'react';
 import Slider from 'react-slick';
+import { RESOURCES_PATH } from 'consts';
 
 class Preview extends React.PureComponent {
   state = {
@@ -32,7 +33,7 @@ class Preview extends React.PureComponent {
             ref={e => (this.sliderA = e)}
           >
             {this.props.thumbs.map((item, index) =>
-              (<img src={item} key={index.toString()} alt="img" />))}
+              (<img src={RESOURCES_PATH + item} key={index.toString()} alt="img" />))}
           </Slider>
         </div>
         <div className="col-5">
@@ -47,7 +48,7 @@ class Preview extends React.PureComponent {
             ref={e => (this.sliderB = e)}
           >
             {this.props.thumbs.map((item, index) =>
-              (<img src={item} key={index.toString()} alt="img" />))}
+              (<img src={RESOURCES_PATH + item} key={index.toString()} alt="img" />))}
           </Slider>
         </div>
       </div>
