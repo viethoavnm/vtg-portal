@@ -20,7 +20,7 @@ const BlogGallery = ({ list = [] }) => {
             <h4 className="item__title webkit-text" title={item.title}>{item.title}</h4>
             <div className="item__info info">
               <span className="info__author">{item.author ? item.author : 'Unknown'}</span>
-              <span className="info__time">{moment(item.modifiedDate).format('DD/MM/YYYY')}</span>
+              <span className="info__time">{moment(item.lastModify).format('DD/MM/YYYY')}</span>
               <span className="info__count"><FormattedMessage id="%d views" values={{ value: item.viewCount }} /></span>
             </div>
           </div>

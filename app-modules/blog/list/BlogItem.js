@@ -26,7 +26,7 @@ const BlogItem = ({ item }) => {
         <Link className="content__title webkit-text" href={url} title={item.title}>{item.title}</Link>
         <ul className="content__info info">
           <li className="author">{item.author ? item.author : 'Unknown'}</li>
-          <li>{moment(item.modifiedDate).format('DD/MM/YYYY')}</li>
+          <li>{moment(item.lastModify).format('DD/MM/YYYY')}</li>
           <li><FormattedMessage id="%d views" values={{ value: item.viewCount }} /></li>
         </ul>
         <div className="content__description webkit-text">

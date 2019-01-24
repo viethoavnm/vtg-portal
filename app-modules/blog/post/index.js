@@ -60,9 +60,9 @@ class Post extends React.PureComponent {
     const { post } = this.props;
     const { province } = this.state;
     const ads = { url: '#', src: '/static/images/co-ip.jpg' }
-    if (province && province.adsList) {
-      ads.url = province.adsList[0].adsUrl
-      ads.src = RESOURCES_THUMB_PATH + province.adsList[0].name || ads.src
+    if (province && province.adsList && province.adsList[1]) {
+      ads.url = province.adsList[1].adsUrl
+      ads.src = RESOURCES_THUMB_PATH + province.adsList[1].name || ads.src
     }
     return (
       <React.Fragment>
@@ -89,15 +89,11 @@ class Post extends React.PureComponent {
           <ImageLoader className="cover__image" src={RESOURCES_PATH + post.bannerContentName} alt={post.title} />
           <div className="cover__nest">
             <div className="container cover__nest--flex">
-              <span className="cover__left date-time">
-                <span className="date-time___day">{moment(post.createdDate).format('dddd')}</span>
-                <span className="date-time___date">{moment(post.createdDate).format('MMM Do')}</span>
-              </span>
               <div className="cover__right">
-                <h1 className="cover__title">{post.title}</h1>
+                <h1 className="cover__title webkit-text">{post.title}</h1>
                 <ul className="info">
                   <li><IconText type="clock-circle" text={moment(post.createdDate).format('ll')} /></li>
-                  <li><IconText type="user" text={post.author ? post.author : '(Anonymous)'} /></li>
+                  <li><IconText type="user" text={post.author ? post.author : ' - '} /></li>
                   <li><IconText type="eye" text={post.viewCount} /></li>
                 </ul>
               </div>

@@ -31,7 +31,7 @@ class Blogs extends React.PureComponent {
         categoryId: query.categoryId,
         key: query.text,
         status: 'PUBLISHED',
-        sort: 'createdDate,desc'
+        sort: 'lastModify,desc'
       })
         .then((data) => {
           this.setState({
@@ -44,7 +44,7 @@ class Blogs extends React.PureComponent {
           this.setState({ loading: false })
         })
     } else
-      request.getBlogList({ page, sort: 'createdDate,desc' })
+      request.getBlogList({ page, sort: 'lastModify,desc' })
         .then((data) => {
           this.setState({
             ...data,

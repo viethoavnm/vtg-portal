@@ -75,7 +75,7 @@ export default class ImageLoader extends React.Component {
         /* eslint-disable */
         return <img {...this.props} />
       case Status.FAILED:
-        return <div className={this.props.className}><Skeleton active /></div>
+        return <img {...this.props} src="/static/images/hotel-default.jpg"/>
       default:
         return <div className={this.props.className}><Skeleton active /></div>
     }
