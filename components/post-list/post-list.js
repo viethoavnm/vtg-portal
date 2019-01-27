@@ -30,7 +30,7 @@ class PostList extends React.PureComponent {
                 {item.title}
               </span>
               <div className="post-item__actions">
-                <IconText type="clock-circle" text={moment(item.createdDate).format('DD/MM/YYYY')} />
+                <IconText type="clock-circle" text={moment(item.lastModify).format('DD/MM/YYYY')} />
                 <Divider type="vertical" />
                 <IconText type="eye" text={item.viewCount} />
               </div>
