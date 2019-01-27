@@ -27,9 +27,9 @@ class Post extends React.PureComponent {
 
   componentDidMount() {
     const { categoryId, provinceId } = this.props.post
-    request.getRelativeBlog({ categoryId, provinceId })
-      .then(({ content: relative }) => {
-        this.setState({ relative })
+    request.getRelativeBlog({ categoryId, provinceId, limit: 6 })
+      .then(({ content }) => {
+        this.setState({ relative: content.slice(0, 6) })
       });
     request.getProvince(provinceId)
       .then((province) => {
@@ -92,7 +92,7 @@ class Post extends React.PureComponent {
               <div className="cover__right">
                 <h1 className="cover__title webkit-text">{post.title}</h1>
                 <ul className="info">
-                  <li><IconText type="clock-circle" text={moment(post.createdDate).format('ll')} /></li>
+                  <li><IconText type="clock-circle" text={moment(post.lastModify).format('DD/MM/YYYY')} /></li>
                   <li><IconText type="user" text={post.author ? post.author : ' - '} /></li>
                   <li><IconText type="eye" text={post.viewCount} /></li>
                 </ul>
