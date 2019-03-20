@@ -128,6 +128,9 @@ class Post extends React.PureComponent {
                       <FormattedMessage id="%d rating." values={{ value: this.state.rated ? post.statisticsRatingCount + 1 : post.statisticsRatingCount }} />
                     </div>
                   </div>
+                  <div style={{ margin:'16px 0'  }}>
+                    <b>Từ khóa: </b>{post.tagList}
+                  </div>
                   <div style={{ marginTop: 8 }}><ShareButton url={APP_URL + post.url} /></div>
                 </div>
                 <div className="fb-comments" data-href={APP_URL + post.url} data-numposts="3"></div>
