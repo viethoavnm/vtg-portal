@@ -33,7 +33,7 @@ const Footer = ({ info = {}, intl: { formatMessage } }) => (
               <p><a href={info.insLink} target="_blank"><Social src="/static/images/social/instagram-icon.png" text="Instagram" /></a></p>
               <p><a href={info.ytbLink} target="_blank"><Social src="/static/images/social/youtube-icon.png" text="Youtube" /></a></p>
               <p><a href={info.twLink} target="_blank"><Social src="/static/images/social/twitter-icon.png" text="Twitter" /></a></p>
-              <p><a href={info.gpLink} target="_blank"><Social src="/static/images/social/gp-icon.png" text="Google +" /></a></p>
+              <p><a href={info.gpLink} target="_blank"><Social src="/static/images/social/gp-icon.png" text="Linkedin" /></a></p>
             </div>
             <div className="col-sm-7 col-md-3">
               <p className="footer__category">{formatMessage({ id: 'Download app now' })}</p>
